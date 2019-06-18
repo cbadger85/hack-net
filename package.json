@@ -1,0 +1,35 @@
+{
+  "name": "hack-net",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbadger85/hack-net.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cbadger85/hack-net/issues"
+  },
+  "homepage": "https://github.com/cbadger85/hack-net#readme",
+  "dependencies": {
+    "@babel/register": "^7.4.4",
+    "blessed": "^0.1.81",
+    "react": "^16.8.6",
+    "react-blessed": "^0.6.0",
+    "react-blessed-contrib": "^0.2.1",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "install-peers": "^1.0.3"
+  }
+}
