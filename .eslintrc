@@ -1,0 +1,17 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "env": {
+    "node": true,
+    "es6": true,
+    "browser": true
+  },
+  "rules": {
+    "no-console": 0,
+    "react/jsx-filename-extension": 0,
+    "react/prop-types": 0,
+    "react/destructuring-assignment": 0,
+    "react/button-has-type": 0,
+    "react/prefer-stateless-function": 0,
+    "react/no-multi-comp": 0
+  }
+}

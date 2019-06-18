@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node start.js"
   },
   "repository": {
     "type": "git",
@@ -28,8 +28,11 @@
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
-    "install-peers": "^1.0.3"
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "install-peers": "^1.0.3",
+    "ws": "^7.0.1"
   }
 }
