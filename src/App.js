@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Console from './components/Console';
+import Console from './components/Console/';
 
 const App = () => {
   return (
