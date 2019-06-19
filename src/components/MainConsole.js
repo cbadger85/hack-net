@@ -8,6 +8,7 @@ import Timer from './Timer';
 const MainConsole = ({
   terminalOutput,
   addToTerminalDisplay,
+  clearTerminalDisplay,
   addToTerminalHistory,
   isTerminalActive,
   setTerminalInactive,
@@ -15,7 +16,7 @@ const MainConsole = ({
 }) => {
   const handleRunCommand = input => {
     addToTerminalDisplay({ output: `> ${input}` });
-    addToTerminalHistory(input);
+    input.trim() && addToTerminalHistory(input);
 
     const [command, ...args] = input.split(' ');
 
@@ -26,6 +27,20 @@ const MainConsole = ({
           color: '#4286f4',
         });
         break;
+      case 'timer':
+        setTerminalInactive();
+        addToTerminalDisplay({
+          output: (
+            <Timer
+              initialTime={args[0]}
+              setTerminalActive={setTerminalActive}
+            />
+          ),
+        });
+        break;
+      case 'clear':
+        clearTerminalDisplay();
+        break;
       default:
         addToTerminalDisplay({
           output: 'invalid command',
@@ -33,14 +48,6 @@ const MainConsole = ({
         });
         break;
     }
-
-    // console command logic goes here
-    // addToTerminalHistory({
-    //   output: <Timer initialTime={5} setTerminalActive={setTerminalActive} />,
-    //   color: '#ff5151',
-    // });
-
-    // setTerminalInactive();
   };
 
   return (

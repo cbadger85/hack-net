@@ -7,7 +7,7 @@ import ConsoleInput from './ConsoleInput';
 const ConsoleWrapper = styled.div`
    {
     width: 95%;
-    height: 200px;
+    height: 30rem;
     background: #171e1d;
     overflow: scroll;
     color: #9d9d9d;
