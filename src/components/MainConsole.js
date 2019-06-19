@@ -26,7 +26,7 @@ const MainConsole = ({ terminal, addToTerminalHistory }) => {
 
     // console command logic goes here
     addToTerminalHistory({
-      output: 'invalid command',
+      output: <Timer initialTime={5} />,
       color: '#ff5151',
     });
   };

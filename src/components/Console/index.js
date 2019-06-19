@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import ConsoleOutput from './ConsoleOutput';
@@ -21,25 +21,13 @@ const ConsoleWrapper = styled.div`
 `;
 
 const ConsoleContainer = ({ terminal, runCommand, disableInput }) => {
-  const consoleComponent = useRef(null);
-
-  useEffect(() => {
-    const { scrollHeight } = consoleComponent.current;
-
-    consoleComponent.current.scrollTo(0, scrollHeight);
-
-    consoleComponent.current.scrollIntoView({
-      block: 'end',
-    });
-  });
-
   const handleFocus = () => {
     const consoleInput = document.getElementById('console-input');
     !disableInput && consoleInput.focus();
   };
 
   return (
-    <ConsoleWrapper ref={consoleComponent} onClick={handleFocus}>
+    <ConsoleWrapper onClick={handleFocus}>
       <ConsoleOutput terminal={terminal} />
       {!disableInput && <ConsoleInput runCommand={runCommand} />}
     </ConsoleWrapper>
