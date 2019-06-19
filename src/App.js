@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Console from './components/Console/';
+import MainConsole from './components/MainConsole';
 
 const App = () => {
   return (
     <div>
-      <Console />
+      <MainConsole />
     </div>
   );
 };

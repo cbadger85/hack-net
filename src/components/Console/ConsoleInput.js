@@ -19,16 +19,13 @@ const Input = styled.input`
   }
 `;
 
-const ConsoleInput = ({ addToTerminalHistory }) => {
+const ConsoleInput = ({ runCommand }) => {
   const [input, setInput] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    addToTerminalHistory({ input });
-
-    // console command logic goes here
-    addToTerminalHistory({ input: 'invalid command', color: '#ff5151' });
+    runCommand(input);
 
     setInput('');
   };
