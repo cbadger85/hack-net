@@ -20,7 +20,7 @@ const ConsoleWrapper = styled.div`
   }
 `;
 
-const ConsoleContainer = ({ terminal, runCommand, disableInput }) => {
+const ConsoleContainer = ({ terminalOutput, runCommand, disableInput }) => {
   const handleFocus = () => {
     const consoleInput = document.getElementById('console-input');
     !disableInput && consoleInput.focus();
@@ -28,7 +28,7 @@ const ConsoleContainer = ({ terminal, runCommand, disableInput }) => {
 
   return (
     <ConsoleWrapper onClick={handleFocus}>
-      <ConsoleOutput terminal={terminal} />
+      <ConsoleOutput terminalOutput={terminalOutput} />
       {!disableInput && <ConsoleInput runCommand={runCommand} />}
     </ConsoleWrapper>
   );

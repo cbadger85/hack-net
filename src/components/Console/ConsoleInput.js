@@ -27,11 +27,16 @@ const ConsoleInput = ({ runCommand }) => {
   const [input, setInput] = useState('');
   const [inputHeight, setInputHeight] = useState('auto');
   const consoleInput = useRef();
+  let timeout;
 
   useEffect(() => {
     consoleInput.current.scrollIntoView({
       block: 'end',
     });
+
+    return () => {
+      clearTimeout(timeout);
+    };
   });
 
   const handleKeyDown = e => {
@@ -41,10 +46,12 @@ const ConsoleInput = ({ runCommand }) => {
       setInput('');
     }
 
-    setTimeout(() => {
+    timeout = setTimeout(() => {
       setInputHeight('auto');
 
-      const { scrollHeight } = consoleInput.current;
+      const scrollHeight = consoleInput.current
+        ? consoleInput.current.scrollHeight
+        : 0;
       setInputHeight(`${scrollHeight}px`);
     }, 0);
   };

@@ -1,54 +1,67 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import Console from './Console/';
-import { addToTerminalHistory } from '../store/actions';
+import * as actions from '../store/actions';
+import Timer from './Timer';
 
-export const Timer = ({ initialTime }) => {
-  const [time, setTime] = useState(initialTime);
+const MainConsole = ({
+  terminalOutput,
+  addToTerminalDisplay,
+  addToTerminalHistory,
+  isTerminalActive,
+  setTerminalInactive,
+  setTerminalActive,
+}) => {
+  const handleRunCommand = input => {
+    addToTerminalDisplay({ output: `> ${input}` });
+    addToTerminalHistory(input);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (time > 0) setTime(time => time - 1);
-    }, 1000);
+    const [command, ...args] = input.split(' ');
 
-    return () => {
-      clearInterval(timer);
-    };
-  });
-
-  return <div>{time}</div>;
-};
-
-const MainConsole = ({ terminal, addToTerminalHistory }) => {
-  const handleRunCommand = command => {
-    addToTerminalHistory({ output: `> ${command}` });
+    switch (command.toLowerCase()) {
+      case 'echo':
+        addToTerminalDisplay({
+          output: args.join(' '),
+          color: '#4286f4',
+        });
+        break;
+      default:
+        addToTerminalDisplay({
+          output: 'invalid command',
+          color: '#ff5151',
+        });
+        break;
+    }
 
     // console command logic goes here
-    addToTerminalHistory({
-      output: <Timer initialTime={5} />,
-      color: '#ff5151',
-    });
+    // addToTerminalHistory({
+    //   output: <Timer initialTime={5} setTerminalActive={setTerminalActive} />,
+    //   color: '#ff5151',
+    // });
+
+    // setTerminalInactive();
   };
 
   return (
-    <>
-      <Console terminal={terminal} runCommand={handleRunCommand} />
-    </>
+    <Console
+      terminalOutput={terminalOutput}
+      runCommand={handleRunCommand}
+      disableInput={!isTerminalActive}
+    />
   );
 };
 
-const mapStateToProps = ({ terminal }) => {
+const mapStateToProps = ({
+  terminal: { terminalOutput, isTerminalActive },
+}) => {
   return {
-    terminal,
+    terminalOutput,
+    isTerminalActive,
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  addToTerminalHistory: payload => dispatch(addToTerminalHistory(payload)),
-});
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(MainConsole);

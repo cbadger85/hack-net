@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ConsoleOutput = ({ terminal }) => {
-  const showTerminalOutput = terminal.map(terminalLine => (
+const ConsoleOutput = ({ terminalOutput }) => {
+  const showTerminalOutput = terminalOutput.map(terminalLine => (
     <div key={terminalLine.id} style={{ color: terminalLine.color }}>
       {terminalLine.output}
     </div>

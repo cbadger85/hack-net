@@ -1,6 +1,6 @@
 import nanoid from 'nanoid';
 
-import { ADD_TO_TERMINAL_HISTORY } from '../actions';
+import { ADD_TO_TERMINAL_DISPLAY } from '../../actions';
 
 const initialState = [
   {
@@ -12,7 +12,7 @@ const initialState = [
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case ADD_TO_TERMINAL_HISTORY:
+    case ADD_TO_TERMINAL_DISPLAY:
       return [...state, payload];
     default:
       return state;
