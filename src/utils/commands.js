@@ -63,7 +63,6 @@ export const createRunner = (args, props) => {
 };
 
 export const displayRunner = (args, props) => {
-  // add check if runner hasn't been created yet
   const { player } = store.getState();
 
   if (!player.name) {
@@ -95,4 +94,19 @@ export const error = (args, props) => {
       color: colors.red,
     })
   );
+};
+
+export const executeRun = (args, props) => {
+  const { player } = store.getState();
+
+  if (!player.name) {
+    store.dispatch(
+      actions.addToTerminalDisplay({
+        output: 'you need to create a runner first',
+        color: colors.red,
+      })
+    );
+    return;
+  }
+  store.dispatch(actions.switchScreenToRunConsole());
 };

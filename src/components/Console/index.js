@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import ConsoleOutput from './ConsoleOutput';
 import ConsoleInput from './ConsoleInput';
 import ConsoleBottom from './ConsoleBottom';
-import colors from '../../utils/colors';
 
 const ConsoleWrapper = styled.div`
   overflow: scroll;
@@ -15,7 +14,6 @@ const ConsoleWrapper = styled.div`
   margin: auto;
   height: 100%;
   width: 100%;
-  border-right: 2px solid ${colors.blue};
   cursor: text;
 `;
 

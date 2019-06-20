@@ -1,13 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-import Layout from './components/Layout';
+import MainLayout from './components/MainLayout';
+import RunLayout from './components/RunLayout';
 
-const App = () => {
-  return (
-    <div>
-      <Layout />
-    </div>
-  );
+const App = ({ screen }) => {
+  switch (screen) {
+    case 'run':
+      return (
+        <div>
+          <RunLayout />
+        </div>
+      );
+    default:
+      return (
+        <div>
+          <MainLayout />
+        </div>
+      );
+  }
 };
 
-export default App;
+const mapStateToProps = ({ game }) => ({
+  screen: game.screen,
+});
+
+export default connect(mapStateToProps)(App);

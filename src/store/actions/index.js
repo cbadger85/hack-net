@@ -36,3 +36,13 @@ export const damageFirewall = damage => ({
   type: DAMAGE_FIREWALL,
   payload: { damage },
 });
+
+export const SWITCH_SCREEN_TO_RUN_CONSOLE = 'SWITCH_SCREEN_TO_RUN_CONSOLE';
+export const switchScreenToRunConsole = () => ({
+  type: SWITCH_SCREEN_TO_RUN_CONSOLE,
+});
+
+export const SWITCH_SCREEN_TO_MAIN_CONSOLE = 'SWITCH_SCREEN_TO_MAIN_CONSOLE';
+export const switchScreenToMainConsole = () => ({
+  type: SWITCH_SCREEN_TO_MAIN_CONSOLE,
+});

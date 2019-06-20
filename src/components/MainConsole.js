@@ -35,6 +35,9 @@ const MainConsole = ({
       case 'clear':
         commands.clearTerminal();
         break;
+      case 'run':
+        commands.executeRun();
+        break;
       default:
         commands.error();
         break;
