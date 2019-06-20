@@ -30,3 +30,9 @@ export const createPlayer = name => ({
   type: CREATE_PLAYER,
   payload: { name },
 });
+
+export const DAMAGE_FIREWALL = 'DAMAGE_FIREWALL';
+export const damageFirewall = damage => ({
+  type: DAMAGE_FIREWALL,
+  payload: { damage },
+});
