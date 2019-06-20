@@ -30,13 +30,17 @@ const ConsoleInput = ({ runCommand }) => {
   let timeout;
 
   useEffect(() => {
+    consoleInput.current.scrollIntoView({
+      block: 'end',
+    });
+
     return () => {
       clearTimeout(timeout);
     };
   });
 
   const handleKeyDown = e => {
-    if (e.which === 13 && !e.shiftKey) {
+    if (e.which === 13) {
       e.preventDefault();
       runCommand(input.trim());
       setInput('');

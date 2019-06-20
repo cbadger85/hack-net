@@ -9,19 +9,13 @@ import * as commands from '../utils/commands';
 const MainConsole = ({
   terminalOutput,
   addToTerminalDisplay,
-  clearTerminalDisplay,
   addToTerminalHistory,
   isTerminalActive,
-  setTerminalInactive,
   setTerminalActive,
-  createPlayer,
-  playerName,
 }) => {
   const handleRunCommand = input => {
     addToTerminalDisplay({ output: `> ${input}` });
     input.trim() && addToTerminalHistory(input);
-
-    console.log(playerName, 'MainConsole component');
 
     const [command, ...args] = input.split(' ');
 
@@ -48,16 +42,11 @@ const MainConsole = ({
   };
 
   return (
-    <>
-      <Console
-        terminalOutput={terminalOutput}
-        runCommand={handleRunCommand}
-        disableInput={!isTerminalActive}
-      />
-      <button onClick={() => console.log(playerName)}>
-        Click to show name
-      </button>
-    </>
+    <Console
+      terminalOutput={terminalOutput}
+      runCommand={handleRunCommand}
+      disableInput={!isTerminalActive}
+    />
   );
 };
 

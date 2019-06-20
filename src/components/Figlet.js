@@ -7,7 +7,7 @@ import colors from '../utils/colors';
 
 const FigletWrapper = styled.div`
   white-space: pre;
-  margin: 1em 0 1em 4em;
+  margin: 1em 0 1em 2em;
 `;
 
 const FigletText = styled.span`

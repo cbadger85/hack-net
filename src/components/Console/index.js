@@ -7,16 +7,15 @@ import ConsoleBottom from './ConsoleBottom';
 import colors from '../../utils/colors';
 
 const ConsoleWrapper = styled.div`
-  width: 95%;
-  height: 30rem;
-  background: ${colors.darkPurple};
   overflow: scroll;
-  color: ${colors.blue};
   font-family: monospace;
   font-size: 1.2rem;
   line-height: 1.3em;
   padding: 0.4em;
   margin: auto;
+  height: 100%;
+  width: 100%;
+  border-right: 2px solid ${colors.blue};
   cursor: text;
 `;
 

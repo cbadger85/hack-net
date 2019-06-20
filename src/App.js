@@ -1,11 +1,11 @@
 import React from 'react';
 
-import MainConsole from './components/MainConsole';
+import Layout from './components/Layout';
 
 const App = () => {
   return (
     <div>
-      <MainConsole />
+      <Layout />
     </div>
   );
 };
