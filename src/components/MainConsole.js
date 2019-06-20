@@ -5,6 +5,8 @@ import Console from './Console/';
 import * as actions from '../store/actions';
 import Timer from './Timer';
 
+import * as commands from '../commands';
+
 const MainConsole = ({
   terminalOutput,
   addToTerminalDisplay,
@@ -26,24 +28,20 @@ const MainConsole = ({
 
     switch (command.toLowerCase()) {
       case 'echo':
-        addToTerminalDisplay({
-          output: args.join(' '),
-          color: '#4286f4',
-        });
+        commands.echo(args);
         break;
       case 'timer':
-        setTerminalInactive();
-        addToTerminalDisplay({
-          output: (
-            <Timer
-              initialTime={args[0]}
-              setTerminalActive={setTerminalActive}
-            />
-          ),
-        });
+        commands.timer(args, { setTerminalActive });
         break;
       case 'create-runner':
         // loook into thunks
+        if (args.length === 0 || !args[0].trim()) {
+          addToTerminalDisplay({
+            output: 'you must provide a name',
+            color: '#ff5151',
+          });
+          break;
+        }
         createPlayer(args[0]);
         addToTerminalDisplay({
           output: `Welcome ${args[0]}`,
@@ -82,7 +80,6 @@ const MainConsole = ({
 };
 
 const mapStateToProps = ({ terminal, player }) => {
-  console.log(player.name, 'mapStateToProps');
   return {
     terminalOutput: terminal.terminalOutput,
     isTerminalActive: terminal.isTerminalActive,
@@ -94,5 +91,3 @@ export default connect(
   mapStateToProps,
   actions
 )(MainConsole);
-
-// terminal: { terminalOutput, isTerminalActive }
