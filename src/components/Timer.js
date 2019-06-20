@@ -10,12 +10,6 @@ const countdown = size => keyframes`
   }
 `;
 
-const getAnimation = props =>
-  css`
-    animation: ${props => countdown(props.size)} ${props => props.initialTime}s
-      linear forwards;
-  `;
-
 const TimerContainer = styled.div`
   position: relative;
   height: ${props => props.size}px;
@@ -28,6 +22,7 @@ const Countdown = styled.div`
   color: ${props => (props.isAnimated ? props.countdownColor : '#ff5151')};
   display: inline-block;
   line-height: ${props => props.size}px;
+  font-size: ${props => props.size / 2.5}px;
 `;
 
 const SvgTimer = styled.svg`
@@ -45,23 +40,19 @@ const SvgTimer = styled.svg`
     stroke-width: 4px;
     stroke: ${props => (props.isAnimated ? props.timerColor : '#ff5151')};
     fill: none;
-    /* animation: ${props => countdown(props.size)} ${props =>
-  props.initialTime}s
-      linear forwards; */
     ${props =>
-      props.isAnimated
-        ? css`
-            animation: ${props => countdown(props.size)}
-              ${props => props.initialTime}s linear forwards;
-          `
-        : css``}
+      props.isAnimated &&
+      css`
+        animation: ${props => countdown(props.size)}
+          ${props => props.initialTime}s linear forwards;
+      `}
   }
 `;
 
 export const Timer = ({
   initialTime,
   setTerminalActive,
-  size = 40,
+  size = 60,
   timerColor = 'green',
   countdownColor = 'green',
 }) => {
