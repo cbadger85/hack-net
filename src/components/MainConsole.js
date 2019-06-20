@@ -50,6 +50,11 @@ const MainConsole = ({
           color: '#4286f4',
         });
         break;
+      case 'display-runner':
+        addToTerminalDisplay({
+          output: playerName,
+        });
+        break;
       case 'clear':
         clearTerminalDisplay();
         break;

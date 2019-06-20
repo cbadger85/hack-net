@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import ConsoleOutput from './ConsoleOutput';
 import ConsoleInput from './ConsoleInput';
+import ConsoleBottom from './ConsoleBottom';
 
 const ConsoleWrapper = styled.div`
    {
@@ -30,6 +31,7 @@ const ConsoleContainer = ({ terminalOutput, runCommand, disableInput }) => {
     <ConsoleWrapper onClick={handleFocus}>
       <ConsoleOutput terminalOutput={terminalOutput} />
       {!disableInput && <ConsoleInput runCommand={runCommand} />}
+      <ConsoleBottom />
     </ConsoleWrapper>
   );
 };
