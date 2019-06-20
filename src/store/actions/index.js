@@ -24,3 +24,9 @@ export const setTerminalActive = () => ({ type: SET_TERMINAL_ACTIVE });
 
 export const SET_TERMINAL_INACTIVE = 'SET_TERMINAL_INACTIVE';
 export const setTerminalInactive = () => ({ type: SET_TERMINAL_INACTIVE });
+
+export const CREATE_PLAYER = 'CREATE_PLAYER';
+export const createPlayer = name => ({
+  type: CREATE_PLAYER,
+  payload: { name },
+});

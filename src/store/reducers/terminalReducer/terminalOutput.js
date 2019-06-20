@@ -1,13 +1,13 @@
 import React from 'react';
 import nanoid from 'nanoid';
 
-import Figlet from '../../../components/Figlet';
+import Intro from '../../../components/Intro';
 
 import { ADD_TO_TERMINAL_DISPLAY, CLEAR_TERMINAL_DISPLAY } from '../../actions';
 
 const initialState = [
   {
-    output: <Figlet text={'HACKER NET'} />,
+    output: <Intro />,
     color: '#9d9d9d',
     id: nanoid,
   },

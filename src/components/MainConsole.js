@@ -13,10 +13,14 @@ const MainConsole = ({
   isTerminalActive,
   setTerminalInactive,
   setTerminalActive,
+  createPlayer,
+  playerName,
 }) => {
   const handleRunCommand = input => {
     addToTerminalDisplay({ output: `> ${input}` });
     input.trim() && addToTerminalHistory(input);
+
+    console.log(playerName, 'MainConsole component');
 
     const [command, ...args] = input.split(' ');
 
@@ -38,6 +42,14 @@ const MainConsole = ({
           ),
         });
         break;
+      case 'create-runner':
+        // loook into thunks
+        createPlayer(args[0]);
+        addToTerminalDisplay({
+          output: `Welcome ${args[0]}`,
+          color: '#4286f4',
+        });
+        break;
       case 'clear':
         clearTerminalDisplay();
         break;
@@ -51,20 +63,25 @@ const MainConsole = ({
   };
 
   return (
-    <Console
-      terminalOutput={terminalOutput}
-      runCommand={handleRunCommand}
-      disableInput={!isTerminalActive}
-    />
+    <>
+      <Console
+        terminalOutput={terminalOutput}
+        runCommand={handleRunCommand}
+        disableInput={!isTerminalActive}
+      />
+      <button onClick={() => console.log(playerName)}>
+        Click to show name
+      </button>
+    </>
   );
 };
 
-const mapStateToProps = ({
-  terminal: { terminalOutput, isTerminalActive },
-}) => {
+const mapStateToProps = ({ terminal, player }) => {
+  console.log(player.name, 'mapStateToProps');
   return {
-    terminalOutput,
-    isTerminalActive,
+    terminalOutput: terminal.terminalOutput,
+    isTerminalActive: terminal.isTerminalActive,
+    playerName: player.name,
   };
 };
 
@@ -72,3 +89,5 @@ export default connect(
   mapStateToProps,
   actions
 )(MainConsole);
+
+// terminal: { terminalOutput, isTerminalActive }

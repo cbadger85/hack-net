@@ -7,7 +7,11 @@ const ConsoleOutput = ({ terminalOutput }) => {
     </div>
   ));
 
-  return <div>{showTerminalOutput}</div>;
+  return (
+    <div style={{ marginTop: '.5em', marginBottom: '.5em' }}>
+      {showTerminalOutput}
+    </div>
+  );
 };
 
 export default ConsoleOutput;
