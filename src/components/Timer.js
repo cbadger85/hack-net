@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { useEffect, useState, memo } from 'react';
+import styled, { keyframes, css } from 'styled-components';
 
 const countdown = size => keyframes`
   from {
@@ -10,6 +10,12 @@ const countdown = size => keyframes`
   }
 `;
 
+const getAnimation = props =>
+  css`
+    animation: ${props => countdown(props.size)} ${props => props.initialTime}s
+      linear forwards;
+  `;
+
 const TimerContainer = styled.div`
   position: relative;
   height: ${props => props.size}px;
@@ -19,7 +25,7 @@ const TimerContainer = styled.div`
 `;
 
 const Countdown = styled.div`
-  color: white;
+  color: ${props => (props.isAnimated ? props.countdownColor : '#ff5151')};
   display: inline-block;
   line-height: ${props => props.size}px;
 `;
@@ -37,20 +43,34 @@ const SvgTimer = styled.svg`
     stroke-dashoffset: 0px;
     stroke-linecap: round;
     stroke-width: 4px;
-    stroke: white;
+    stroke: ${props => (props.isAnimated ? props.timerColor : '#ff5151')};
     fill: none;
-    animation: ${props => countdown(props.size)} ${props => props.initialTime}s
-      linear forwards;
+    /* animation: ${props => countdown(props.size)} ${props =>
+  props.initialTime}s
+      linear forwards; */
+    ${props =>
+      props.isAnimated
+        ? css`
+            animation: ${props => countdown(props.size)}
+              ${props => props.initialTime}s linear forwards;
+          `
+        : css``}
   }
 `;
 
-export const Timer = ({ initialTime, setTerminalActive, size = 150 }) => {
+export const Timer = ({
+  initialTime,
+  setTerminalActive,
+  size = 40,
+  timerColor = 'green',
+  countdownColor = 'green',
+}) => {
   const [time, setTime] = useState(parseInt(initialTime));
 
   useEffect(() => {
     const timer = setInterval(() => {
       if (time > 0) {
-        setTime(time => time - 1);
+        setTime(time - 1);
       }
     }, 1000);
 
@@ -59,7 +79,7 @@ export const Timer = ({ initialTime, setTerminalActive, size = 150 }) => {
     };
   });
 
-  if (time <= 0) {
+  if (time === 0) {
     setTerminalActive();
   }
 
@@ -71,15 +91,26 @@ export const Timer = ({ initialTime, setTerminalActive, size = 150 }) => {
       </span>
     );
   }
-  // cx, cy === radius r === radius - 2
+
   return (
     <TimerContainer size={size}>
-      <Countdown size={size}>{time}</Countdown>
-      <SvgTimer initialTime={initialTime} size={size}>
+      <Countdown
+        size={size}
+        countdownColor={countdownColor}
+        isAnimated={time > 0 ? true : false}
+      >
+        {time > 0 ? time : 0}
+      </Countdown>
+      <SvgTimer
+        initialTime={initialTime}
+        size={size}
+        timerColor={timerColor}
+        isAnimated={time > 0 ? true : false}
+      >
         <circle r={size / 2 - 4} cx={size / 2} cy={size / 2} />
       </SvgTimer>
     </TimerContainer>
   );
 };
 
-export default Timer;
+export default memo(Timer);
