@@ -11,7 +11,7 @@ const FigletWrapper = styled.div`
 `;
 
 const FigletText = styled.span`
-  color: ${colors.pink};
+  color: ${props => props.color};
 `;
 
 const getFigletPromise = (inputText, font) => {
@@ -24,7 +24,7 @@ const getFigletPromise = (inputText, font) => {
   return text;
 };
 
-const Figlet = ({ children, font = 'poison' }) => {
+const Figlet = ({ children, font = 'poison', color = colors.pink }) => {
   const [figletText, setFigletText] = useState('');
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const Figlet = ({ children, font = 'poison' }) => {
 
   return (
     <FigletWrapper>
-      <FigletText>{figletText}</FigletText>
+      <FigletText color={color}>{figletText}</FigletText>
     </FigletWrapper>
   );
 };
