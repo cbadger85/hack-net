@@ -3,9 +3,15 @@ import figlet from 'figlet';
 import { promisify } from 'es6-promisify';
 import styled from 'styled-components';
 
+import colors from '../utils/colors';
+
 const FigletWrapper = styled.div`
   white-space: pre;
   margin: 1em 0 1em 4em;
+`;
+
+const FigletText = styled.span`
+  color: ${colors.pink};
 `;
 
 const getFigletPromise = (inputText, font) => {
@@ -27,7 +33,11 @@ const Figlet = ({ children, font = 'poison' }) => {
 
   console.log(figletText);
 
-  return <FigletWrapper>{figletText}</FigletWrapper>;
+  return (
+    <FigletWrapper>
+      <FigletText>{figletText}</FigletText>
+    </FigletWrapper>
+  );
 };
 
 export default Figlet;

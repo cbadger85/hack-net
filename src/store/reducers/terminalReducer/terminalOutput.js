@@ -8,7 +8,6 @@ import { ADD_TO_TERMINAL_DISPLAY, CLEAR_TERMINAL_DISPLAY } from '../../actions';
 const initialState = [
   {
     output: <Intro />,
-    color: '#9d9d9d',
     id: nanoid,
   },
 ];

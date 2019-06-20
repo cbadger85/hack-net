@@ -1,7 +1,7 @@
 import nanoid from 'nanoid';
 
 export const ADD_TO_TERMINAL_DISPLAY = 'ADD_TO_TERMINAL_DISPLAY';
-export const addToTerminalDisplay = ({ output, color = '#9d9d9d' }) => ({
+export const addToTerminalDisplay = ({ output, color = '' }) => ({
   type: ADD_TO_TERMINAL_DISPLAY,
   payload: {
     id: nanoid(),

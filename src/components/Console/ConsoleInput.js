@@ -9,12 +9,12 @@ const Textarea = styled.textarea`
   border: none;
   width: 100%;
   background-color: inherit;
-  color: #9d9d9d;
+  color: inherit;
   margin: 0.5em;
   margin-top: 0;
   font-family: inherit;
   font-size: inherit;
-  height: ${props => props.height}
+  height: ${props => props.height};
   resize: none;
   padding: 0;
 

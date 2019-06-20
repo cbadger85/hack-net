@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 
 import Console from './Console/';
 import * as actions from '../store/actions';
-import Timer from './Timer';
 
-import * as commands from '../commands';
+import * as commands from '../utils/commands';
 
 const MainConsole = ({
   terminalOutput,
@@ -34,33 +33,16 @@ const MainConsole = ({
         commands.timer(args, { setTerminalActive });
         break;
       case 'create-runner':
-        // loook into thunks
-        if (args.length === 0 || !args[0].trim()) {
-          addToTerminalDisplay({
-            output: 'you must provide a name',
-            color: '#ff5151',
-          });
-          break;
-        }
-        createPlayer(args[0]);
-        addToTerminalDisplay({
-          output: `Welcome ${args[0]}`,
-          color: '#4286f4',
-        });
+        commands.createRunner(args);
         break;
       case 'display-runner':
-        addToTerminalDisplay({
-          output: playerName,
-        });
+        commands.displayRunner(args);
         break;
       case 'clear':
-        clearTerminalDisplay();
+        commands.clearTerminal();
         break;
       default:
-        addToTerminalDisplay({
-          output: 'invalid command',
-          color: '#ff5151',
-        });
+        commands.error();
         break;
     }
   };

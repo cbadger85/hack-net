@@ -7,7 +7,7 @@ const Intro = () => {
     <div>
       <Figlet>Hacker Net</Figlet>
       <div style={{ marginBottom: '1em' }}>
-        Type create-runner [name] to begin...
+        run create-runner [name] to begin...
       </div>
     </div>
   );
