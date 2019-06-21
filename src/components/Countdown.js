@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Figlet from './Figlet';
 import colors from '../utils/colors';
+import gameController from '../utils/gameController';
 
 const CountdownWrapper = styled.div`
   text-align: center;
@@ -13,13 +14,10 @@ const CountdownWrapper = styled.div`
   justify-content: space-around;
   flex-direction: column;
   height: 10em;
-  /* padding: 2em; */
 `;
 
-// props: Time given for level, list of programs computer has.
-
-const Countdown = () => {
-  const [timer, setTimer] = useState(59);
+const Countdown = ({ initialTime = 59 }) => {
+  const [timer, setTimer] = useState(initialTime);
 
   useEffect(() => {
     const countdownTimer = setInterval(() => {
@@ -30,6 +28,8 @@ const Countdown = () => {
 
     return () => clearInterval(countdownTimer);
   });
+
+  gameController(timer, initialTime);
 
   return (
     <CountdownWrapper>
