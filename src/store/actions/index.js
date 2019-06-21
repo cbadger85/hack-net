@@ -25,16 +25,22 @@ export const setTerminalActive = () => ({ type: SET_TERMINAL_ACTIVE });
 export const SET_TERMINAL_INACTIVE = 'SET_TERMINAL_INACTIVE';
 export const setTerminalInactive = () => ({ type: SET_TERMINAL_INACTIVE });
 
+export const ADD_TO_RUN_TERMINAL_HISTORY = 'ADD_TO_RUN_TERMINAL_HISTORY';
+export const addToRunTerminalHistory = command => ({
+  type: ADD_TO_RUN_TERMINAL_HISTORY,
+  payload: command,
+});
+
 export const CREATE_PLAYER = 'CREATE_PLAYER';
 export const createPlayer = name => ({
   type: CREATE_PLAYER,
-  payload: { name },
+  payload: name,
 });
 
 export const DAMAGE_FIREWALL = 'DAMAGE_FIREWALL';
 export const damageFirewall = damage => ({
   type: DAMAGE_FIREWALL,
-  payload: { damage },
+  payload: damage,
 });
 
 export const SWITCH_SCREEN_TO_RUN_CONSOLE = 'SWITCH_SCREEN_TO_RUN_CONSOLE';

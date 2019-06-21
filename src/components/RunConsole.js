@@ -1,17 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
 import Console from './Console';
+import * as actions from '../store/actions';
 
-const RunConsole = () => {
-  const [output, setOutput] = useState([{ output: 'Running...' }]);
-
+const RunConsole = ({
+  terminalOutput,
+  addToTerminalDisplay,
+  addToRunTerminalHistory,
+  switchScreenToMainConsole,
+}) => {
   const handleRunCommand = input => {
-    setOutput([...output, { output: `> ${input}` }]);
+    addToTerminalDisplay({ output: input });
+    input.trim() && addToRunTerminalHistory(input);
+
+    if (input === 'main') {
+      switchScreenToMainConsole();
+    }
   };
 
   return (
-    <Console terminalOutput={output} runCommand={handleRunCommand} runMode />
+    <Console
+      terminalOutput={terminalOutput}
+      runCommand={handleRunCommand}
+      runMode
+    />
   );
 };
 
-export default RunConsole;
+const mapStateToProps = ({ runTerminal }) => ({
+  terminalOutput: runTerminal.terminalOutput,
+});
+
+export default connect(
+  mapStateToProps,
+  actions
+)(RunConsole);
