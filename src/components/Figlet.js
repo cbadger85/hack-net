@@ -37,8 +37,6 @@ const Figlet = ({
     getFigletPromise(children, font).then(data => setFigletText(data));
   }, [children, font]);
 
-  console.log(figletText);
-
   return (
     <FigletWrapper color={color} console={isConsole}>
       {figletText}

@@ -35,8 +35,8 @@ const MainConsole = ({
       case 'clear':
         commands.clearTerminal();
         break;
-      case 'run':
-        commands.executeRun();
+      case 'connect':
+        commands.executeRun(args);
         break;
       default:
         commands.error();

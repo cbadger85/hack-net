@@ -37,6 +37,16 @@ export const createPlayer = name => ({
   payload: name,
 });
 
+export const CREATE_ENEMY = 'CREATE_ENEMY';
+export const createEnemy = ({ name, firewallStrength, programs }) => ({
+  type: CREATE_ENEMY,
+  payload: {
+    name,
+    firewallStrength,
+    programs,
+  },
+});
+
 export const DAMAGE_FIREWALL = 'DAMAGE_FIREWALL';
 export const damageFirewall = damage => ({
   type: DAMAGE_FIREWALL,

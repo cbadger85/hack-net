@@ -40,9 +40,9 @@ const ConsoleInput = ({ runCommand, runMode }) => {
   let timeout;
 
   useEffect(() => {
-    consoleInput.current.scrollIntoView({
-      block: 'end',
-    });
+    // consoleInput.current.scrollIntoView({
+    //   block: 'end',
+    // });
 
     return () => {
       clearTimeout(timeout);

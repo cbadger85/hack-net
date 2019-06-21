@@ -4,6 +4,7 @@ import store from '../store';
 import * as actions from '../store/actions';
 import Timer from '../components/Timer';
 import colors from './colors';
+import enemyCorps from './enemyCorps';
 
 export const timer = (args, props) => {
   store.dispatch(actions.setTerminalInactive());
@@ -108,5 +109,20 @@ export const executeRun = (args, props) => {
     );
     return;
   }
+
+  const listOfEnemyCorps = Object.keys(enemyCorps);
+
+  if (!listOfEnemyCorps.includes(args[0])) {
+    store.dispatch(
+      actions.addToTerminalDisplay({
+        output: "That connection doesn't exist",
+        color: colors.red,
+      })
+    );
+    return;
+  }
+
+  console.log(enemyCorps[args[0]]);
+  store.dispatch(actions.createEnemy(enemyCorps[args[0]]));
   store.dispatch(actions.switchScreenToRunConsole());
 };

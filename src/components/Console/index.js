@@ -1,17 +1,12 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import ConsoleOutput from './ConsoleOutput';
 import ConsoleInput from './ConsoleInput';
 import ConsoleBottom from './ConsoleBottom';
 
 const ConsoleWrapper = styled.div`
-  ${props =>
-    !props.runMode &&
-    css`
-      overflow: scroll;
-    `}
-
+  overflow: scroll;
   font-family: monospace;
   font-size: 1.2rem;
   line-height: 1.3em;

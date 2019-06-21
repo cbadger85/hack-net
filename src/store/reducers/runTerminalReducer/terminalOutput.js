@@ -1,5 +1,3 @@
-import nanoid from 'nanoid';
-
 import {
   ADD_TO_TERMINAL_DISPLAY,
   SWITCH_SCREEN_TO_RUN_CONSOLE,
