@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import Layout from './Layout';
 import RunConsole from './RunConsole';
-import MainConsole from './MainConsole';
 import HealthBarContainer from './HealthBarContainer';
 import colors from '../utils/colors';
 
@@ -30,7 +29,7 @@ const RunLayout = () => {
         <HealthBarContainer />
       </HealthBarWrapper>
       <ConsoleAndStatusWrapper className="console-and-status-row">
-        <MainConsole />
+        <RunConsole />
         <CountdownAndStacksWrapper className="countdown-and-stack-timers-column">
           <div className="countdown-timer">{/* GameTimer1 */}</div>
           <div className="program-stack">{/* StackLayout */}</div>

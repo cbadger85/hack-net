@@ -10,14 +10,18 @@ const ConsoleWrapper = styled.div`
   font-family: monospace;
   font-size: 1.2rem;
   line-height: 1.3em;
-  padding: 0.4em;
   margin: auto;
   height: 100%;
   width: 100%;
   cursor: text;
 `;
 
-const ConsoleContainer = ({ terminalOutput, runCommand, disableInput }) => {
+const ConsoleContainer = ({
+  terminalOutput,
+  runCommand,
+  disableInput,
+  runMode,
+}) => {
   const handleFocus = () => {
     const consoleInput = document.getElementById('console-input');
     !disableInput && consoleInput.focus();
@@ -25,8 +29,10 @@ const ConsoleContainer = ({ terminalOutput, runCommand, disableInput }) => {
 
   return (
     <ConsoleWrapper onClick={handleFocus}>
-      <ConsoleOutput terminalOutput={terminalOutput} />
-      {!disableInput && <ConsoleInput runCommand={runCommand} />}
+      <ConsoleOutput terminalOutput={terminalOutput} runMode={runMode} />
+      {!disableInput && (
+        <ConsoleInput runCommand={runCommand} runMode={runMode} />
+      )}
       <ConsoleBottom />
     </ConsoleWrapper>
   );

@@ -1,8 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import colors from '../../utils/colors';
 
 const InputContainer = styled.div`
   display: flex;
+  padding: 0.4em;
+  padding-top: 0;
+  ${props =>
+    props.runMode &&
+    css`
+      border-top: 2px solid ${colors.blue};
+      padding-top: 0.4em;
+      padding-bottom: 0;
+    `}
 `;
 
 const Textarea = styled.textarea`
@@ -16,14 +27,13 @@ const Textarea = styled.textarea`
   font-size: inherit;
   height: ${props => props.height};
   resize: none;
-  padding: 0;
 
   &:focus {
     outline: none;
   }
 `;
 
-const ConsoleInput = ({ runCommand }) => {
+const ConsoleInput = ({ runCommand, runMode }) => {
   const [input, setInput] = useState('');
   const [inputHeight, setInputHeight] = useState('auto');
   const consoleInput = useRef();
@@ -61,7 +71,7 @@ const ConsoleInput = ({ runCommand }) => {
   };
 
   return (
-    <InputContainer>
+    <InputContainer runMode={runMode}>
       <label>> </label>
       <Textarea
         value={input}

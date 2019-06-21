@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import Console from './Console';
 
 const RunConsole = () => {
+  const [output, setOutput] = useState([{ output: 'Running...' }]);
+
+  const handleRunCommand = input => {
+    setOutput([...output, { output: input }]);
+  };
+
   return (
-    <div>
-      <div style={{ width: '100%', height: '100%' }}>RUN CONSOLE</div>
-    </div>
+    <Console terminalOutput={output} runCommand={handleRunCommand} runMode />
   );
 };
 
