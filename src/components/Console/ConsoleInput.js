@@ -5,8 +5,7 @@ import colors from '../../utils/colors';
 
 const InputContainer = styled.div`
   display: flex;
-  padding: 0.4em;
-  padding-top: 0;
+  padding-left: 0.4em;
   ${props =>
     props.runMode &&
     css`
@@ -21,12 +20,12 @@ const Textarea = styled.textarea`
   width: 100%;
   background-color: inherit;
   color: inherit;
-  margin: 0.5em;
-  margin-top: -0.1em;
+  margin: 0em 0.5em 0 0.5em;
   font-family: inherit;
   font-size: inherit;
   height: ${props => props.height};
   resize: none;
+  padding-bottom: 0.5em;
 
   &:focus {
     outline: none;
@@ -40,10 +39,6 @@ const ConsoleInput = ({ runCommand, runMode }) => {
   let timeout;
 
   useEffect(() => {
-    // consoleInput.current.scrollIntoView({
-    //   block: 'end',
-    // });
-
     return () => {
       clearTimeout(timeout);
     };
@@ -71,20 +66,22 @@ const ConsoleInput = ({ runCommand, runMode }) => {
   };
 
   return (
-    <InputContainer runMode={runMode}>
-      <label>> </label>
-      <Textarea
-        value={input}
-        onChange={handleOnChange}
-        id="console-input"
-        autoFocus
-        autoComplete="off"
-        rows="1"
-        ref={consoleInput}
-        onKeyDown={handleKeyDown}
-        height={inputHeight}
-      />
-    </InputContainer>
+    <>
+      <InputContainer runMode={runMode}>
+        <label>> </label>
+        <Textarea
+          value={input}
+          onChange={handleOnChange}
+          id="console-input"
+          autoFocus
+          autoComplete="off"
+          rows="1"
+          ref={consoleInput}
+          onKeyDown={handleKeyDown}
+          height={inputHeight}
+        />
+      </InputContainer>
+    </>
   );
 };
 

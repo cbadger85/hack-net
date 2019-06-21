@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
 import ConsoleOutput from './ConsoleOutput';
 import ConsoleInput from './ConsoleInput';
-import ConsoleBottom from './ConsoleBottom';
 
 const ConsoleWrapper = styled.div`
   overflow: scroll;
@@ -22,18 +21,23 @@ const ConsoleContainer = ({
   disableInput,
   runMode,
 }) => {
+  const consoleScroll = useRef();
+
+  useEffect(() => {
+    consoleScroll.current.scrollTop = consoleScroll.current.scrollHeight;
+  });
+
   const handleFocus = () => {
     const consoleInput = document.getElementById('console-input');
     !disableInput && consoleInput.focus();
   };
 
   return (
-    <ConsoleWrapper runMode onClick={handleFocus}>
+    <ConsoleWrapper runMode onClick={handleFocus} ref={consoleScroll}>
       <ConsoleOutput terminalOutput={terminalOutput} runMode={runMode} />
       {!disableInput && (
         <ConsoleInput runCommand={runCommand} runMode={runMode} />
       )}
-      <ConsoleBottom />
     </ConsoleWrapper>
   );
 };
