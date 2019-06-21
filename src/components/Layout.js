@@ -12,6 +12,7 @@ const Layout = styled.div`
   border: 1px solid ${colors.blue};
   color: ${colors.blue};
   background: ${colors.darkPurple};
+  font-family: monospace;
 `;
 
 export default Layout;

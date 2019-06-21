@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Layout from './Layout';
 import RunConsole from './RunConsole';
 import HealthBarContainer from './HealthBarContainer';
+import Countdown from './Countdown';
 import colors from '../utils/colors';
 
 const HealthBarWrapper = styled.div`
@@ -13,7 +14,7 @@ const HealthBarWrapper = styled.div`
 `;
 
 const ConsoleAndStatusWrapper = styled.div`
-  height: 664px;
+  height: 660px;
   display: flex;
 `;
 
@@ -31,7 +32,9 @@ const RunLayout = () => {
       <ConsoleAndStatusWrapper className="console-and-status-row">
         <RunConsole />
         <CountdownAndStacksWrapper className="countdown-and-stack-timers-column">
-          <div className="countdown-timer">{/* GameTimer1 */}</div>
+          <div className="countdown-timer">
+            <Countdown />
+          </div>
           <div className="program-stack">{/* StackLayout */}</div>
         </CountdownAndStacksWrapper>
       </ConsoleAndStatusWrapper>

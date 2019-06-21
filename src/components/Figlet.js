@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import figlet from 'figlet';
 import { promisify } from 'es6-promisify';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import colors from '../utils/colors';
 
 const FigletWrapper = styled.div`
   white-space: pre;
-  margin: 1em 0 1em 2em;
-`;
-
-const FigletText = styled.span`
   color: ${props => props.color};
+  ${props =>
+    props.console &&
+    css`
+      margin: 1em 0 1em 2em;
+    `}
 `;
 
 const getFigletPromise = (inputText, font) => {
@@ -24,7 +25,12 @@ const getFigletPromise = (inputText, font) => {
   return text;
 };
 
-const Figlet = ({ children, font = 'poison', color = colors.pink }) => {
+const Figlet = ({
+  children,
+  font = 'poison',
+  color = colors.pink,
+  isConsole,
+}) => {
   const [figletText, setFigletText] = useState('');
 
   useEffect(() => {
@@ -34,8 +40,8 @@ const Figlet = ({ children, font = 'poison', color = colors.pink }) => {
   console.log(figletText);
 
   return (
-    <FigletWrapper>
-      <FigletText color={color}>{figletText}</FigletText>
+    <FigletWrapper color={color} console={isConsole}>
+      {figletText}
     </FigletWrapper>
   );
 };

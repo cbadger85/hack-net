@@ -11,8 +11,8 @@ const InputContainer = styled.div`
     props.runMode &&
     css`
       border-top: 2px solid ${colors.blue};
-      padding-top: 0.4em;
-      padding-bottom: 0;
+      padding-top: 0.5em;
+      padding-bottom: 0em;
     `}
 `;
 
@@ -22,7 +22,7 @@ const Textarea = styled.textarea`
   background-color: inherit;
   color: inherit;
   margin: 0.5em;
-  margin-top: 0;
+  margin-top: -0.1em;
   font-family: inherit;
   font-size: inherit;
   height: ${props => props.height};

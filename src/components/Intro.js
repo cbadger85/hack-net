@@ -5,7 +5,7 @@ import Figlet from './Figlet';
 const Intro = () => {
   return (
     <div>
-      <Figlet>Hacker Net</Figlet>
+      <Figlet isConsole>Hacker Net</Figlet>
       <div style={{ marginBottom: '1em' }}>
         run create-runner [name] to begin...
       </div>

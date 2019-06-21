@@ -6,7 +6,7 @@ const RunConsole = () => {
   const [output, setOutput] = useState([{ output: 'Running...' }]);
 
   const handleRunCommand = input => {
-    setOutput([...output, { output: input }]);
+    setOutput([...output, { output: `> ${input}` }]);
   };
 
   return (

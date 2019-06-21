@@ -11,8 +11,7 @@ const ConsoleOutput = ({ terminalOutput, runMode }) => {
 
   const runModeStyles = runMode
     ? {
-        height: '610px',
-        width: '100%',
+        height: '598px',
       }
     : {};
 
@@ -28,6 +27,7 @@ const ConsoleOutput = ({ terminalOutput, runMode }) => {
         padding: '0.4em',
         paddingBottom: 0,
         overflowY: 'scroll',
+        width: '100%',
         ...runModeStyles,
       }}
       ref={consoleOutput}
