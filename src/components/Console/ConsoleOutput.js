@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
+
+import ConsoleBottom from './ConsoleBottom';
 
 const ConsoleOutput = ({ terminalOutput, runMode }) => {
-  const consoleOutput = useRef();
-
   const showTerminalOutput = terminalOutput.map(terminalLine => (
     <div key={terminalLine.id} style={{ color: terminalLine.color }}>
       {terminalLine.output}
@@ -15,10 +15,6 @@ const ConsoleOutput = ({ terminalOutput, runMode }) => {
       }
     : {};
 
-  useEffect(() => {
-    consoleOutput.current.scrollTop = consoleOutput.current.scrollHeight;
-  });
-
   return (
     <div
       style={{
@@ -30,9 +26,9 @@ const ConsoleOutput = ({ terminalOutput, runMode }) => {
         width: '100%',
         ...runModeStyles,
       }}
-      ref={consoleOutput}
     >
       {showTerminalOutput}
+      <ConsoleBottom />
     </div>
   );
 };

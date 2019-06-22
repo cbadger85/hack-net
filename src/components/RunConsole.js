@@ -6,12 +6,12 @@ import * as actions from '../store/actions';
 
 const RunConsole = ({
   terminalOutput,
-  addToTerminalDisplay,
+  addToRunTerminalDisplay,
   addToRunTerminalHistory,
   switchScreenToMainConsole,
 }) => {
   const handleRunCommand = input => {
-    addToTerminalDisplay({ output: input });
+    addToRunTerminalDisplay({ output: input });
     input.trim() && addToRunTerminalHistory(input);
 
     if (input === 'main') {

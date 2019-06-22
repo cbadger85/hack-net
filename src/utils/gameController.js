@@ -23,13 +23,13 @@ export default (time, initialTime) => {
 
   if (time === initialTime) {
     store.dispatch(
-      actions.addToTerminalDisplay({ output: <Corp name={enemy.name} /> })
+      actions.addToRunTerminalDisplay({ output: <Corp name={enemy.name} /> })
     );
   }
 
   if (time % 5 === 0) {
     store.dispatch(
-      actions.addToTerminalDisplay({
+      actions.addToRunTerminalDisplay({
         output: '+++ INTRUSION DETECTED +++',
         color: colors.red,
       })

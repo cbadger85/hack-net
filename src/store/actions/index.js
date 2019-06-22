@@ -31,6 +31,16 @@ export const addToRunTerminalHistory = command => ({
   payload: command,
 });
 
+export const ADD_TO_RUN_TERMINAL_DISPLAY = 'ADD_TO_RUN_TERMINAL_DISPLAY';
+export const addToRunTerminalDisplay = ({ output, color = '' }) => ({
+  type: ADD_TO_RUN_TERMINAL_DISPLAY,
+  payload: {
+    id: nanoid(),
+    color,
+    output,
+  },
+});
+
 export const CREATE_PLAYER = 'CREATE_PLAYER';
 export const createPlayer = name => ({
   type: CREATE_PLAYER,

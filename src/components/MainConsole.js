@@ -1,21 +1,26 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Console from './Console/';
-import * as actions from '../store/actions';
+import {
+  addToTerminalHistory,
+  addToTerminalDisplay,
+  setTerminalActive,
+} from '../store/actions';
 
 import * as commands from '../utils/commands';
 
-const MainConsole = ({
-  terminalOutput,
-  addToTerminalDisplay,
-  addToTerminalHistory,
-  isTerminalActive,
-  setTerminalActive,
-}) => {
+const MainConsole = () => {
+  const terminalOutput = useSelector(state => state.terminal.terminalOutput);
+  const isTerminalActive = useSelector(
+    state => state.terminal.isTerminalActive
+  );
+
+  const dispatch = useDispatch();
+
   const handleRunCommand = input => {
-    addToTerminalDisplay({ output: `> ${input}` });
-    input.trim() && addToTerminalHistory(input);
+    dispatch(addToTerminalDisplay({ output: `> ${input}` }));
+    input.trim() && dispatch(addToTerminalHistory(input));
 
     const [command, ...args] = input.split(' ');
 
@@ -24,7 +29,9 @@ const MainConsole = ({
         commands.echo(args);
         break;
       case 'timer':
-        commands.timer(args, { setTerminalActive });
+        commands.timer(args, {
+          setTerminalActive: () => dispatch(setTerminalActive()),
+        });
         break;
       case 'create-runner':
         commands.createRunner(args);
@@ -53,15 +60,4 @@ const MainConsole = ({
   );
 };
 
-const mapStateToProps = ({ terminal, player }) => {
-  return {
-    terminalOutput: terminal.terminalOutput,
-    isTerminalActive: terminal.isTerminalActive,
-    playerName: player.name,
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  actions
-)(MainConsole);
+export default MainConsole;
