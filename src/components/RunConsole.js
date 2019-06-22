@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 
 import Console from './Console';
 import * as actions from '../store/actions';
+import colors from '../utils/colors';
 
 const RunConsole = ({
   terminalOutput,
   addToRunTerminalDisplay,
+  addToTerminalDisplay,
   addToRunTerminalHistory,
   switchScreenToMainConsole,
 }) => {
@@ -14,8 +16,13 @@ const RunConsole = ({
     addToRunTerminalDisplay({ output: input });
     input.trim() && addToRunTerminalHistory(input);
 
+    // switch to ctrl+c
     if (input === 'main') {
       switchScreenToMainConsole();
+      addToTerminalDisplay({
+        output: 'connection lost...',
+        color: colors.red,
+      });
     }
   };
 

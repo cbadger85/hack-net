@@ -122,7 +122,6 @@ export const executeRun = (args, props) => {
     return;
   }
 
-  console.log(enemyCorps[args[0]]);
   store.dispatch(actions.createEnemy(enemyCorps[args[0]]));
   store.dispatch(actions.switchScreenToRunConsole());
 };

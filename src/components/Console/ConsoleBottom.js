@@ -3,14 +3,8 @@ import React, { useEffect, useRef } from 'react';
 const ConsoleBottom = () => {
   const consoleBottom = useRef();
 
-  const scrollingFunc = () => {
-    console.log('im scrolling');
-    consoleBottom.current.scrollIntoView({ behavior: 'smooth' });
-    consoleBottom.current.scrollTop += 300;
-  };
-
   useEffect(() => {
-    scrollingFunc();
+    consoleBottom.current.scrollIntoView({ behavior: 'smooth' });
   });
 
   return <div ref={consoleBottom} />;
