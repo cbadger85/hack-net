@@ -23,12 +23,13 @@ const ConsoleOutput = ({ terminalOutput, runMode }) => {
         padding: '0.4em',
         paddingBottom: 0,
         overflowY: 'scroll',
+        wordWrap: 'break-word',
         width: '100%',
         ...runModeStyles,
       }}
     >
       {showTerminalOutput}
-      <ConsoleBottom />
+      {runMode && <ConsoleBottom />}
     </div>
   );
 };

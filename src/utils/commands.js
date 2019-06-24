@@ -20,7 +20,7 @@ export const timer = (args, props) => {
   );
 };
 
-export const echo = (args, props) => {
+export const echo = args => {
   store.dispatch(
     actions.addToTerminalDisplay({
       output: args.join(' '),
@@ -29,7 +29,7 @@ export const echo = (args, props) => {
   );
 };
 
-export const createRunner = (args, props) => {
+export const createRunner = args => {
   const { player } = store.getState();
   // loook into thunks
 
@@ -63,7 +63,7 @@ export const createRunner = (args, props) => {
   );
 };
 
-export const displayRunner = (args, props) => {
+export const displayRunner = args => {
   const { player } = store.getState();
 
   if (!player.name) {
@@ -84,7 +84,7 @@ export const displayRunner = (args, props) => {
   );
 };
 
-export const clearTerminal = (args, props) => {
+export const clearTerminal = args => {
   store.dispatch(actions.clearTerminalDisplay());
 };
 
@@ -97,7 +97,7 @@ export const error = (args, props) => {
   );
 };
 
-export const executeRun = (args, props) => {
+export const executeRun = args => {
   const { player } = store.getState();
 
   if (!player.name) {

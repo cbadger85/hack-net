@@ -1,28 +1,34 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Console from './Console';
-import * as actions from '../store/actions';
-import colors from '../utils/colors';
-
-const RunConsole = ({
-  terminalOutput,
+import {
   addToRunTerminalDisplay,
-  addToTerminalDisplay,
   addToRunTerminalHistory,
-  switchScreenToMainConsole,
-}) => {
-  const handleRunCommand = input => {
-    addToRunTerminalDisplay({ output: input });
-    input.trim() && addToRunTerminalHistory(input);
+} from '../store/actions';
+import * as runCommands from '../utils/runCommands';
 
-    // switch to ctrl+c
-    if (input === 'main') {
-      switchScreenToMainConsole();
-      addToTerminalDisplay({
-        output: 'connection lost...',
-        color: colors.red,
-      });
+const RunConsole = () => {
+  const terminalOutput = useSelector(state => state.runTerminal.terminalOutput);
+
+  const dispatch = useDispatch();
+
+  const handleRunCommand = input => {
+    dispatch(addToRunTerminalDisplay({ output: `> ${input}` }));
+    input.trim() && dispatch(addToRunTerminalHistory(input));
+
+    const [command, ...args] = input.split(' ');
+
+    switch (command.toLowerCase()) {
+      case 'main':
+        runCommands.main();
+        break;
+      case 'exec':
+        runCommands.execCounterIce(args);
+        break;
+      default:
+        runCommands.error();
+        break;
     }
   };
 
@@ -35,11 +41,4 @@ const RunConsole = ({
   );
 };
 
-const mapStateToProps = ({ runTerminal }) => ({
-  terminalOutput: runTerminal.terminalOutput,
-});
-
-export default connect(
-  mapStateToProps,
-  actions
-)(RunConsole);
+export default RunConsole;

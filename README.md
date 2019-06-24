@@ -1,4 +1,4 @@
 # TODO
 
-- CSS Reset
 - add shop
+  -add ctrl + c to quite run/shop
