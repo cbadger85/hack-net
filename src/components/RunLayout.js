@@ -5,6 +5,7 @@ import Layout from './Layout';
 import RunConsole from './RunConsole';
 import HealthBarContainer from './HealthBarContainer';
 import Countdown from './Countdown';
+import CallStack from './CallStack';
 import colors from '../utils/colors';
 
 const HealthBarWrapper = styled.div`
@@ -35,7 +36,9 @@ const RunLayout = () => {
           <div className="countdown-timer">
             <Countdown />
           </div>
-          <div className="program-stack">{/* StackLayout */}</div>
+          <div className="program-stack">
+            <CallStack />
+          </div>
         </CountdownAndStacksWrapper>
       </ConsoleAndStatusWrapper>
     </Layout>
