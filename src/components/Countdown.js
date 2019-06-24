@@ -16,7 +16,7 @@ const CountdownWrapper = styled.div`
   height: 10em;
 `;
 
-const Countdown = ({ initialTime = 59 }) => {
+const Countdown = ({ initialTime = 4 }) => {
   const [timer, setTimer] = useState(initialTime);
 
   useEffect(() => {
@@ -26,17 +26,21 @@ const Countdown = ({ initialTime = 59 }) => {
       }
     }, 1000);
 
-    return () => clearInterval(countdownTimer);
-  });
+    gameController(timer, initialTime);
 
-  gameController(timer, initialTime);
+    return () => {
+      clearInterval(countdownTimer);
+    };
+  });
 
   return (
     <CountdownWrapper>
       <span style={{ fontSize: '1.1rem' }}>Time to trace:</span>
-      <Figlet font="lcd" color={colors.yellow}>
-        {timer}
-      </Figlet>
+      {timer > 0 && (
+        <Figlet font="lcd" color={colors.yellow}>
+          {timer}
+        </Figlet>
+      )}
     </CountdownWrapper>
   );
 };

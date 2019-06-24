@@ -37,7 +37,7 @@ export default (time, initialTime) => {
     );
   }
 
-  if (time <= 0) {
+  if (time === 0) {
     store.dispatch(actions.switchScreenToMainConsole());
 
     store.dispatch(

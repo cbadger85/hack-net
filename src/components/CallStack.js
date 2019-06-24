@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 const CallStackWrapper = styled.div`
   background-color: teal;
@@ -8,7 +9,8 @@ const CallStackWrapper = styled.div`
 `;
 
 const CallStack = () => {
-  return <CallStackWrapper>content...</CallStackWrapper>;
+  const callStack = useSelector(state => state.callStack);
+  return <CallStackWrapper>{callStack}</CallStackWrapper>;
 };
 
 export default CallStack;
