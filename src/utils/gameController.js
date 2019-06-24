@@ -4,6 +4,7 @@ import store from '../store';
 import * as actions from '../store/actions';
 import colors from './colors';
 import Figlet from '../components/Figlet';
+import EndGame from '../components/EndGame';
 
 const Corp = ({ name }) => {
   return (
@@ -34,5 +35,18 @@ export default (time, initialTime) => {
         color: colors.red,
       })
     );
+  }
+
+  if (time <= 0) {
+    store.dispatch(actions.switchScreenToMainConsole());
+
+    store.dispatch(
+      actions.addToTerminalDisplay({
+        output: <EndGame condition={'OUT_OF_TIME'} />,
+        color: colors.red,
+      })
+    );
+
+    store.dispatch(actions.setTerminalInactive());
   }
 };

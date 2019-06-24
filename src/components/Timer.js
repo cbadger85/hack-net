@@ -52,7 +52,7 @@ const SvgTimer = styled.svg`
 export const Timer = ({
   initialTime,
   setTerminalActive,
-  size = 60,
+  size = 10,
   timerColor = 'green',
   countdownColor = 'green',
 }) => {

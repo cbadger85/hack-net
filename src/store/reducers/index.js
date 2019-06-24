@@ -5,5 +5,13 @@ import runTerminal from './runTerminalReducer';
 import player from './playerReducer';
 import enemy from './enemyReducer';
 import game from './gameReducer';
+import callStack from './callStackReducer';
 
-export default combineReducers({ terminal, runTerminal, player, enemy, game });
+export default combineReducers({
+  terminal,
+  runTerminal,
+  player,
+  enemy,
+  game,
+  callStack,
+});

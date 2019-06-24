@@ -72,3 +72,9 @@ export const SWITCH_SCREEN_TO_MAIN_CONSOLE = 'SWITCH_SCREEN_TO_MAIN_CONSOLE';
 export const switchScreenToMainConsole = () => ({
   type: SWITCH_SCREEN_TO_MAIN_CONSOLE,
 });
+
+export const ADD_TO_CALL_STACK = 'ADD_TO_CALL_STACK';
+export const addToCallStack = component => ({
+  type: ADD_TO_CALL_STACK,
+  payload: component,
+});

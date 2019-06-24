@@ -1,3 +1,5 @@
+import React from 'react';
+
 import store from '../store';
 import * as actions from '../store/actions';
 import colors from './colors';
@@ -9,6 +11,11 @@ const printScreen = (output, color = colors.blue) => {
       color,
     })
   );
+};
+
+const runProgram = (programName, component) => {
+  printScreen(`executing ${programName}...`, colors.yellow);
+  store.dispatch(actions.addToCallStack(component));
 };
 
 export const error = args => {
@@ -31,5 +38,14 @@ export const execCounterIce = args => {
     return;
   }
 
-  printScreen(`executing ${args[0]}...`, colors.yellow);
+  const [programName] = args;
+
+  switch (programName) {
+    case 'ice-ice-baby':
+      runProgram(programName, <div />);
+      break;
+    default:
+      printScreen(`${programName} program missing...`, colors.red);
+      break;
+  }
 };
