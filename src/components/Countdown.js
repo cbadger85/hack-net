@@ -16,7 +16,7 @@ const CountdownWrapper = styled.div`
   height: 10em;
 `;
 
-const Countdown = ({ initialTime = 4 }) => {
+const Countdown = ({ initialTime = 59 }) => {
   const [timer, setTimer] = useState(initialTime);
 
   useEffect(() => {

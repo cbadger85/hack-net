@@ -74,7 +74,16 @@ export const switchScreenToMainConsole = () => ({
 });
 
 export const ADD_TO_CALL_STACK = 'ADD_TO_CALL_STACK';
-export const addToCallStack = component => ({
+export const addToCallStack = ({ component, id }) => ({
   type: ADD_TO_CALL_STACK,
-  payload: component,
+  payload: {
+    output: component,
+    id,
+  },
+});
+
+export const REMOVE_PROGRAM_FROM_CALL_STACK = 'REMOVE_PROGRAM_FROM_CALL_STACK';
+export const removeProgramFromCallstack = id => ({
+  type: REMOVE_PROGRAM_FROM_CALL_STACK,
+  payload: { id },
 });

@@ -5,7 +5,7 @@ import store from '../store';
 import * as actions from '../store/actions';
 import colors from './colors';
 import TimeToExecuteCountdown from '../components/TimeToExecuteCountdown';
-import * as iceIceBaby from '../programs/iceIceBaby';
+import * as programs from '../programs';
 
 const printScreen = (output, color = colors.blue) => {
   store.dispatch(
@@ -20,10 +20,18 @@ const runProgram = program => {
   printScreen(`executing ${program.name}...`, colors.yellow);
   const id = nanoid();
   store.dispatch(
-    actions.addToCallStack(
-      <TimeToExecuteCountdown program={program} tte={3} id={id} key={id} />
-    )
-  ); // <- should be TTECountdown component that takes a program, TTE, and a key as props
+    actions.addToCallStack({
+      id,
+      component: (
+        <TimeToExecuteCountdown
+          program={program}
+          tte={program.tte}
+          id={id}
+          key={id}
+        />
+      ),
+    })
+  );
 };
 
 export const error = args => {
@@ -50,7 +58,8 @@ export const execCounterIce = args => {
 
   switch (programName) {
     case 'ice-ice-baby':
-      runProgram(iceIceBaby);
+      console.log(programs.iceIceBaby);
+      runProgram(programs.iceIceBaby);
       break;
     default:
       printScreen(`${programName} program missing...`, colors.red);

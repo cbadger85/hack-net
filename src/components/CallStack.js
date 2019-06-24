@@ -10,7 +10,11 @@ const CallStackWrapper = styled.div`
 
 const CallStack = () => {
   const callStack = useSelector(state => state.callStack);
-  return <CallStackWrapper>{callStack}</CallStackWrapper>;
+  return (
+    <CallStackWrapper>
+      {callStack.map(program => program.output)}
+    </CallStackWrapper>
+  );
 };
 
 export default CallStack;
