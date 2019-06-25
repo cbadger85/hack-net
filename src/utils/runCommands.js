@@ -5,7 +5,7 @@ import store from '../store';
 import * as actions from '../store/actions';
 import colors from './colors';
 import TimeToExecuteCountdown from '../components/TimeToExecuteCountdown';
-import * as programs from '../programs';
+import programs from './programs/playerPrograms';
 
 const printScreen = (output, color = colors.blue) => {
   store.dispatch(
@@ -17,6 +17,15 @@ const printScreen = (output, color = colors.blue) => {
 };
 
 const runProgram = program => {
+  const { buffer } = store.getState().callStack;
+
+  if (buffer - program.memRequired < 0) {
+    printScreen(`not enough memory for ${program.name}`, colors.red);
+    return;
+  }
+
+  console.log(program);
+
   printScreen(`executing ${program.name}...`, colors.yellow);
   const id = nanoid();
   store.dispatch(
@@ -50,13 +59,12 @@ export const execCounterIce = args => {
 
   const [programName] = args;
 
-  switch (programName) {
-    case 'ice-ice-baby':
-      console.log(programs.iceIceBaby);
-      runProgram(programs.iceIceBaby);
-      break;
-    default:
-      printScreen(`${programName} program missing...`, colors.red);
-      break;
+  const program = programs.find(program => program.name === programName);
+
+  if (!program) {
+    printScreen(`${programName} program missing...`, colors.red);
+    return;
   }
+
+  runProgram(program);
 };
