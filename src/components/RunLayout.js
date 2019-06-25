@@ -12,6 +12,10 @@ const HealthBarWrapper = styled.div`
   width: 100%;
   height: 80px;
   border-bottom: 2px solid ${colors.blue};
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0.75em;
 `;
 
 const ConsoleAndStatusWrapper = styled.div`

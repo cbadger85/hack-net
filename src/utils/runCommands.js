@@ -24,8 +24,6 @@ const runProgram = program => {
     return;
   }
 
-  console.log(program);
-
   printScreen(`executing ${program.name}...`, colors.yellow);
   const id = nanoid();
   store.dispatch(
@@ -60,11 +58,14 @@ export const execCounterIce = args => {
   const [programName] = args;
 
   const program = programs.find(program => program.name === programName);
+  if (!program) {
+    printScreen(`${programName} program missing...`, colors.red);
+    return;
+  }
 
   const playerPrograms = store.getState().player.programs;
   const playerHasProgram = playerPrograms.includes(program.name);
-
-  if (!program || !playerHasProgram) {
+  if (!playerHasProgram) {
     printScreen(`${programName} program missing...`, colors.red);
     return;
   }
