@@ -20,7 +20,7 @@ const CountdownTitle = styled.h2`
   font-size: 1.2rem;
 `;
 
-const Countdown = ({ initialTime = 25 }) => {
+const Countdown = ({ initialTime = 59 }) => {
   const [timer, setTimer] = useState(initialTime);
 
   useEffect(() => {

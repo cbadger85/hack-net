@@ -53,7 +53,9 @@ export const createRunner = args => {
     return;
   }
 
-  store.dispatch(actions.createPlayer(args[0]));
+  const programs = ['ice-ice-baby'];
+
+  store.dispatch(actions.createPlayer(args[0], programs));
   const { player: newPlayer } = store.getState();
   store.dispatch(
     actions.addToTerminalDisplay({

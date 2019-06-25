@@ -42,9 +42,9 @@ export const addToRunTerminalDisplay = ({ output, color = '' }) => ({
 });
 
 export const CREATE_PLAYER = 'CREATE_PLAYER';
-export const createPlayer = name => ({
+export const createPlayer = (name, programs) => ({
   type: CREATE_PLAYER,
-  payload: name,
+  payload: { name, programs },
 });
 
 export const CREATE_ENEMY = 'CREATE_ENEMY';
