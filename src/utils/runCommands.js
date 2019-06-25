@@ -61,7 +61,10 @@ export const execCounterIce = args => {
 
   const program = programs.find(program => program.name === programName);
 
-  if (!program) {
+  const playerPrograms = store.getState().player.programs;
+  const playerHasProgram = playerPrograms.includes(program.name);
+
+  if (!program || !playerHasProgram) {
     printScreen(`${programName} program missing...`, colors.red);
     return;
   }
