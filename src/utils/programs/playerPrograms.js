@@ -13,7 +13,7 @@ const printSuccess = programName => {
 
 export default [
   {
-    name: 'ice-ice-baby',
+    name: 'ice-ice-breaker',
     tte: 3,
     cost: 1000,
     memRequired: 16,
