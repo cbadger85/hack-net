@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 import Figlet from './Figlet';
 import colors from '../utils/colors';
@@ -22,6 +23,7 @@ const CountdownTitle = styled.h2`
 
 const Countdown = ({ initialTime = 59 }) => {
   const [timer, setTimer] = useState(initialTime);
+  const enemyHealth = useSelector(state => state.enemy.firewallStrength);
 
   useEffect(() => {
     const countdownTimer = setInterval(() => {
@@ -42,7 +44,7 @@ const Countdown = ({ initialTime = 59 }) => {
       <CountdownTitle style={{ textTransform: 'uppercase' }}>
         Time to trace:
       </CountdownTitle>
-      {timer > 0 && (
+      {timer > 0 && enemyHealth > 0 && (
         <Figlet font="lcd" color={colors.yellow}>
           {timer}
         </Figlet>

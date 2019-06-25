@@ -49,4 +49,17 @@ export default (time, initialTime) => {
 
     store.dispatch(actions.setTerminalInactive());
   }
+
+  if (enemy.firewallStrength <= 0) {
+    store.dispatch(actions.switchScreenToMainConsole());
+
+    const credits = 200;
+
+    store.dispatch(
+      actions.addToTerminalDisplay({
+        output: <EndGame condition={'WIN'} loot={credits} />,
+        color: colors.red,
+      })
+    );
+  }
 };

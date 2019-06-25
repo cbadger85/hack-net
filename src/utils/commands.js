@@ -53,7 +53,7 @@ export const createRunner = args => {
     return;
   }
 
-  const programs = ['ice-ice-breaker']; //! <- add programs purchased in store here.
+  const programs = ['ice-ice-breaker', 'set-them-up-the-bomb']; //! <- add programs purchased in store here.
 
   store.dispatch(actions.createPlayer(args[0], programs));
   const { player: newPlayer } = store.getState();

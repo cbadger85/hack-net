@@ -24,11 +24,11 @@ export default [
   },
   {
     name: 'set-them-up-the-bomb',
-    tte: 20,
+    tte: 1,
     cost: 2500,
     memRequired: 32,
     program: function() {
-      store.dispatch(actions.damageFirewall(20));
+      store.dispatch(actions.damageFirewall(100));
       printSuccess(this.name);
     },
   },
