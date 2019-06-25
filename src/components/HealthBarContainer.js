@@ -8,11 +8,20 @@ const HealthBarContainer = () => {
   const enemyFirewallStrength = useSelector(
     state => state.enemy.firewallStrength
   );
+  const playerFirewallStrength = useSelector(
+    state => state.player.firewallStrength
+  );
 
   const initialEnemyHealth = useRef(enemyFirewallStrength);
+  const initialPlayerHealth = useRef(playerFirewallStrength);
 
   const enemyHealth = parseInt(
     (enemyFirewallStrength / initialEnemyHealth.current) * 100,
+    10
+  );
+
+  const playerHealth = parseInt(
+    (playerFirewallStrength / initialPlayerHealth.current) * 100,
     10
   );
 
@@ -20,7 +29,7 @@ const HealthBarContainer = () => {
     <div style={{ width: '100%', padding: '0.5em' }}>
       <HealthBar
         label="Your firewall strength"
-        width={100}
+        width={playerHealth > 0 ? playerHealth : 0}
         color={colors.green}
       />
       <HealthBar

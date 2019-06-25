@@ -12,6 +12,16 @@ const OutOfTime = () => {
   );
 };
 
+const OutOfHealth = () => {
+  return (
+    <div style={{ color: colors.red }}>
+      <div style={{ color: colors.yellow }}>firewall destroyed</div>
+      <div>+++ TERMINAL LOCKED +++</div>
+      <p style={{ marginTop: '2em' }}>+++ GAME OVER +++</p>
+    </div>
+  );
+};
+
 const Win = ({ loot }) => {
   return (
     <div style={{ color: colors.blue }}>
@@ -29,6 +39,8 @@ const EndGame = ({ condition, loot }) => {
       return <OutOfTime />;
     case 'WIN':
       return <Win loot={loot} />;
+    case 'OUT_OF_HEALTH':
+      return <OutOfHealth />;
     default:
       return <div style={{ color: colors.red }}>+++ GAME OVER +++</div>;
   }

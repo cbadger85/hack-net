@@ -5,7 +5,7 @@ import colors from '../colors';
 const printSuccess = programName => {
   store.dispatch(
     actions.addToRunTerminalDisplay({
-      output: `${programName} executed successfully`,
+      output: `${programName} has been executed against you`,
       color: colors.yellow,
     })
   );
@@ -13,44 +13,34 @@ const printSuccess = programName => {
 
 export default [
   {
-    name: 'ice-ice-breaker',
+    name: 'counter insertion agent',
     tte: 3,
     cost: 1000,
     memRequired: 16,
     program: function() {
-      store.dispatch(actions.damageEnemyFirewall(5));
+      store.dispatch(actions.damagePlayerFirewall(5));
       printSuccess(this.name);
     },
   },
   {
-    name: 'set-them-up-the-bomb',
+    name: 'reverse denial of service',
     tte: 15,
     cost: 2500,
     memRequired: 32,
     program: function() {
-      store.dispatch(actions.damageEnemyFirewall(20));
+      store.dispatch(actions.damagePlayerFirewall(20));
       printSuccess(this.name);
     },
   },
   {
-    name: 'nuke-em',
-    tte: 0,
-    cost: 0,
-    memRequired: 0,
-    program: function() {
-      store.dispatch(actions.damageEnemyFirewall(100));
-      printSuccess(this.name);
-    },
-  },
-  {
-    name: 'death-by-a-dozen-cuts',
+    name: 'anti-viral doubler',
     tte: 10,
     memRequired: 16,
     program: function() {
       let timer = 12;
       const dotTimer = setInterval(() => {
         if (timer > 0) {
-          store.dispatch(actions.damageEnemyFirewall(3));
+          store.dispatch(actions.damagePlayerFirewall(3));
         } else {
           clearInterval(dotTimer);
         }

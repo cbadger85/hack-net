@@ -57,7 +57,7 @@ export const createRunner = args => {
     'ice-ice-breaker',
     'set-them-up-the-bomb',
     'nuke-em',
-    'die',
+    'death-by-a-dozen-cuts',
   ]; //! <- add programs purchased in store here.
 
   store.dispatch(actions.createPlayer(args[0], programs));

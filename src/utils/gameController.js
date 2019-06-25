@@ -5,6 +5,7 @@ import * as actions from '../store/actions';
 import colors from './colors';
 import Figlet from '../components/Figlet';
 import EndGame from '../components/EndGame';
+import enemyPrograms from './programs/enemyPrograms';
 
 const Corp = ({ name }) => {
   return (
@@ -20,7 +21,7 @@ const Corp = ({ name }) => {
 };
 
 export default (time, initialTime) => {
-  const { enemy } = store.getState();
+  const { enemy, player } = store.getState();
 
   if (time === initialTime) {
     store.dispatch(
@@ -29,12 +30,9 @@ export default (time, initialTime) => {
   }
 
   if (time % 5 === 0) {
-    store.dispatch(
-      actions.addToRunTerminalDisplay({
-        output: '+++ INTRUSION DETECTED +++',
-        color: colors.red,
-      })
-    );
+    const length = enemyPrograms.length;
+    const enemyProgramIndex = Math.floor(Math.random() * length);
+    enemyPrograms[enemyProgramIndex].program();
   }
 
   if (time === 0) {
@@ -43,6 +41,19 @@ export default (time, initialTime) => {
     store.dispatch(
       actions.addToTerminalDisplay({
         output: <EndGame condition={'OUT_OF_TIME'} />,
+        color: colors.red,
+      })
+    );
+
+    store.dispatch(actions.setTerminalInactive());
+  }
+
+  if (player.firewallStrength <= 0) {
+    store.dispatch(actions.switchScreenToMainConsole());
+
+    store.dispatch(
+      actions.addToTerminalDisplay({
+        output: <EndGame condition={'OUT_OF_HEALTH'} />,
         color: colors.red,
       })
     );
@@ -59,7 +70,7 @@ export default (time, initialTime) => {
     store.dispatch(
       actions.addToTerminalDisplay({
         output: <EndGame condition={'WIN'} loot={credits} />,
-        color: colors.red,
+        color: colors.blue,
       })
     );
   }

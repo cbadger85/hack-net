@@ -63,9 +63,15 @@ export const createEnemy = ({ name, firewallStrength, programs }) => ({
   },
 });
 
-export const DAMAGE_FIREWALL = 'DAMAGE_FIREWALL';
-export const damageFirewall = damage => ({
-  type: DAMAGE_FIREWALL,
+export const DAMAGE_ENEMY_FIREWALL = 'DAMAGE_ENEMY_FIREWALL';
+export const damageEnemyFirewall = damage => ({
+  type: DAMAGE_ENEMY_FIREWALL,
+  payload: damage,
+});
+
+export const DAMAGE_PLAYER_FIREWALL = 'DAMAGE_PLAYER_FIREWALL';
+export const damagePlayerFirewall = damage => ({
+  type: DAMAGE_PLAYER_FIREWALL,
   payload: damage,
 });
 
