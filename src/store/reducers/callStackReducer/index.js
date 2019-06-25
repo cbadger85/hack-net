@@ -1,15 +1,6 @@
-import {
-  ADD_TO_CALL_STACK,
-  REMOVE_PROGRAM_FROM_CALL_STACK,
-} from '../../actions';
+import { combineReducers } from 'redux';
 
-export default (state = [], { type, payload }) => {
-  switch (type) {
-    case ADD_TO_CALL_STACK:
-      return [...state, payload];
-    case REMOVE_PROGRAM_FROM_CALL_STACK:
-      return state.filter(state => state.id !== payload.id);
-    default:
-      return state;
-  }
-};
+import stack from './stack';
+import buffer from './buffer';
+
+export default combineReducers({ stack, buffer });

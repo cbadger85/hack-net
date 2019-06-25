@@ -16,6 +16,10 @@ const CountdownWrapper = styled.div`
   height: 10em;
 `;
 
+const CountdownTitle = styled.h2`
+  font-size: 1.2rem;
+`;
+
 const Countdown = ({ initialTime = 59 }) => {
   const [timer, setTimer] = useState(initialTime);
 
@@ -35,7 +39,9 @@ const Countdown = ({ initialTime = 59 }) => {
 
   return (
     <CountdownWrapper>
-      <span style={{ fontSize: '1.1rem' }}>Time to trace:</span>
+      <CountdownTitle style={{ textTransform: 'uppercase' }}>
+        Time to trace:
+      </CountdownTitle>
       {timer > 0 && (
         <Figlet font="lcd" color={colors.yellow}>
           {timer}

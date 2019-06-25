@@ -22,14 +22,8 @@ const runProgram = program => {
   store.dispatch(
     actions.addToCallStack({
       id,
-      component: (
-        <TimeToExecuteCountdown
-          program={program}
-          tte={program.tte}
-          id={id}
-          key={id}
-        />
-      ),
+      component: <TimeToExecuteCountdown program={program} id={id} key={id} />,
+      memRequired: program.memRequired,
     })
   );
 };
