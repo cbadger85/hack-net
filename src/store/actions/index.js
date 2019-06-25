@@ -47,6 +47,12 @@ export const createPlayer = (name, programs) => ({
   payload: { name, programs },
 });
 
+export const ADD_TO_PLAYER_CREDITS = 'ADD_TO_PLAYER_CREDITS';
+export const addToPlayerCredits = addedCredits => ({
+  type: ADD_TO_PLAYER_CREDITS,
+  payload: addedCredits,
+});
+
 export const CREATE_ENEMY = 'CREATE_ENEMY';
 export const createEnemy = ({ name, firewallStrength, programs }) => ({
   type: CREATE_ENEMY,

@@ -51,9 +51,10 @@ export default (time, initialTime) => {
   }
 
   if (enemy.firewallStrength <= 0) {
-    store.dispatch(actions.switchScreenToMainConsole());
-
     const credits = 200;
+
+    store.dispatch(actions.switchScreenToMainConsole());
+    store.dispatch(actions.addToPlayerCredits(credits));
 
     store.dispatch(
       actions.addToTerminalDisplay({

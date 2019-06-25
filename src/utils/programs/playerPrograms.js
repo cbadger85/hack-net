@@ -24,11 +24,38 @@ export default [
   },
   {
     name: 'set-them-up-the-bomb',
-    tte: 1,
+    tte: 15,
     cost: 2500,
     memRequired: 32,
     program: function() {
+      store.dispatch(actions.damageFirewall(20));
+      printSuccess(this.name);
+    },
+  },
+  {
+    name: 'nuke-em',
+    tte: 0,
+    cost: 0,
+    memRequired: 0,
+    program: function() {
       store.dispatch(actions.damageFirewall(100));
+      printSuccess(this.name);
+    },
+  },
+  {
+    name: 'die',
+    tte: 1,
+    memRequired: 16,
+    program: function() {
+      let timer = 5;
+      const dotTimer = setInterval(() => {
+        if (timer > 0) {
+          store.dispatch(actions.damageFirewall(5));
+        } else {
+          clearInterval(dotTimer);
+        }
+        timer -= 1;
+      }, 2000);
       printSuccess(this.name);
     },
   },
