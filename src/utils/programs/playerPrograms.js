@@ -11,6 +11,11 @@ const printSuccess = programName => {
   );
 };
 
+const isRunMode = () => {
+  const screen = store.getState().game.screen;
+  return screen === 'run' ? true : false;
+};
+
 export default [
   {
     name: 'ice-ice-breaker',
@@ -18,7 +23,7 @@ export default [
     cost: 1000,
     memRequired: 16,
     program: function() {
-      store.dispatch(actions.damageEnemyFirewall(5));
+      isRunMode() && store.dispatch(actions.damageEnemyFirewall(5));
       printSuccess(this.name);
     },
   },
@@ -28,7 +33,7 @@ export default [
     cost: 2500,
     memRequired: 32,
     program: function() {
-      store.dispatch(actions.damageEnemyFirewall(20));
+      isRunMode() && store.dispatch(actions.damageEnemyFirewall(20));
       printSuccess(this.name);
     },
   },
@@ -38,7 +43,7 @@ export default [
     cost: 0,
     memRequired: 0,
     program: function() {
-      store.dispatch(actions.damageEnemyFirewall(100));
+      isRunMode() && store.dispatch(actions.damageEnemyFirewall(100));
       printSuccess(this.name);
     },
   },
@@ -50,7 +55,7 @@ export default [
       let timer = 12;
       const dotTimer = setInterval(() => {
         if (timer > 0) {
-          store.dispatch(actions.damageEnemyFirewall(3));
+          isRunMode() && store.dispatch(actions.damageEnemyFirewall(3));
         } else {
           clearInterval(dotTimer);
         }

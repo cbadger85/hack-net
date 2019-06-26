@@ -46,7 +46,6 @@ export default (time, initialTime) => {
     const length = enemyPrograms.length;
     const enemyProgramIndex = Math.floor(Math.random() * length);
     enemyPrograms[enemyProgramIndex].program();
-    console.log(`program: ${enemyPrograms[enemyProgramIndex].name}`);
   }
 
   if (player.firewallStrength <= 0) {

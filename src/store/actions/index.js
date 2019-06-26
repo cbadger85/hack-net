@@ -100,3 +100,8 @@ export const removeProgramFromCallstack = (id, memRequired) => ({
   type: REMOVE_PROGRAM_FROM_CALL_STACK,
   payload: { id, memRequired },
 });
+
+export const TICK = 'TICK';
+export const setTick = () => ({
+  type: TICK,
+});

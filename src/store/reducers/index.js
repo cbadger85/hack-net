@@ -6,6 +6,7 @@ import player from './playerReducer';
 import enemy from './enemyReducer';
 import game from './gameReducer';
 import callStack from './callStackReducer';
+import timer from './timerReducer';
 
 export default combineReducers({
   terminal,
@@ -14,4 +15,5 @@ export default combineReducers({
   enemy,
   game,
   callStack,
+  timer,
 });

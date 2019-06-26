@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Figlet from './Figlet';
+import { setTick } from '../store/actions';
 import colors from '../utils/colors';
 import gameController from '../utils/gameController';
 
@@ -22,15 +23,14 @@ const CountdownTitle = styled.h2`
 `;
 
 const Countdown = ({ initialTime = 59 }) => {
-  const [timer, setTimer] = useState(initialTime);
-  const enemyHealth = useSelector(state => state.enemy.firewallStrength);
-  const playerHealth = useSelector(state => state.player.firewallStrength);
+  const timer = useSelector(state => state.timer);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const countdownTimer = setInterval(() => {
       if (timer > 0) {
-        setTimer(timer - 1);
         gameController(timer, initialTime);
+        dispatch(setTick(timer - 1));
       }
     }, 1000);
 
@@ -44,11 +44,9 @@ const Countdown = ({ initialTime = 59 }) => {
       <CountdownTitle style={{ textTransform: 'uppercase' }}>
         Time to trace:
       </CountdownTitle>
-      {timer > 0 && enemyHealth > 0 && playerHealth > 0 && (
-        <Figlet font="lcd" color={colors.yellow}>
-          {timer}
-        </Figlet>
-      )}
+      <Figlet font="lcd" color={colors.yellow}>
+        {timer}
+      </Figlet>
     </CountdownWrapper>
   );
 };
