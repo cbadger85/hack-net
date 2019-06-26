@@ -1,9 +1,12 @@
-import { CREATE_PLAYER, DAMAGE_PLAYER_FIREWALL } from '../../actions';
+import {
+  DAMAGE_PLAYER_FIREWALL,
+  SWITCH_SCREEN_TO_RUN_CONSOLE,
+} from '../../actions';
 
 export default (state = 0, { type, payload }) => {
   switch (type) {
-    case CREATE_PLAYER:
-      return 100;
+    case SWITCH_SCREEN_TO_RUN_CONSOLE:
+      return payload;
     case DAMAGE_PLAYER_FIREWALL:
       return state - payload;
     default:

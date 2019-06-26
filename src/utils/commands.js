@@ -129,6 +129,7 @@ export const executeRun = args => {
     return;
   }
 
+  const firewallStrength = store.getState().player.maxPlayerHealth;
   store.dispatch(actions.createEnemy(enemyCorps[args[0]]));
-  store.dispatch(actions.switchScreenToRunConsole());
+  store.dispatch(actions.switchScreenToRunConsole(firewallStrength));
 };

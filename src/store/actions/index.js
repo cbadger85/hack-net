@@ -76,9 +76,10 @@ export const damagePlayerFirewall = damage => ({
   payload: damage,
 });
 
-export const SWITCH_SCREEN_TO_RUN_CONSOLE = 'SWITCH_SCREEN_TO_RUN_CONSOLE';
-export const switchScreenToRunConsole = () => ({
+export const SWITCH_SCREEN_TO_RUN_CONSOLE = 'SWITCH_SCREEN_TO_RUN_CONSOLE'; //! <------------
+export const switchScreenToRunConsole = initialHealth => ({
   type: SWITCH_SCREEN_TO_RUN_CONSOLE,
+  payload: initialHealth,
 });
 
 export const SWITCH_SCREEN_TO_MAIN_CONSOLE = 'SWITCH_SCREEN_TO_MAIN_CONSOLE';
