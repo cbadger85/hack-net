@@ -56,12 +56,6 @@ export default (time, initialTime) => {
     enemyPrograms[enemyProgramIndex].program(12);
   }
 
-  // if (time === 55) {
-  //   const length = enemyPrograms.length;
-  //   const enemyProgramIndex = Math.floor(Math.random() * length);
-  //   enemyPrograms[enemyProgramIndex].program(12);
-  // }
-
   if (player.firewallStrength <= 0) {
     store.dispatch(actions.switchScreenToMainConsole());
 

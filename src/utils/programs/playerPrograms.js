@@ -55,7 +55,7 @@ export default [
       let timer = 12;
       const dotTimer = setInterval(() => {
         if (timer > 1) {
-          isRunMode() && store.dispatch(actions.damagePlayerFirewall(3));
+          isRunMode() && store.dispatch(actions.damageEnemyFirewall(3));
         }
         if (!isRunMode() || timer <= 1) {
           clearInterval(dotTimer);
