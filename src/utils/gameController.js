@@ -20,8 +20,16 @@ const Corp = ({ name }) => {
   );
 };
 
+const difficulty = {
+  easy: 10,
+  medium: 7,
+  hard: 4,
+};
+
 export default (time, initialTime) => {
   const { enemy, player } = store.getState();
+
+  const difficultyLevel = difficulty[enemy.difficulty];
 
   if (time === initialTime) {
     store.dispatch(
@@ -42,7 +50,7 @@ export default (time, initialTime) => {
     store.dispatch(actions.setTerminalInactive());
   }
 
-  if ((time - 1) % 5 === 0) {
+  if ((time - 1) % difficultyLevel === 0) {
     const length = enemyPrograms.length;
     const enemyProgramIndex = Math.floor(Math.random() * length);
     enemyPrograms[enemyProgramIndex].program();

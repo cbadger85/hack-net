@@ -2,7 +2,7 @@ export default {
   firstCorp: {
     name: 'First Corp',
     connectionName: 'firstCorp',
-    difficultyLevel: 'easy',
+    difficultyLevel: 'hard',
     firewallStrength: 100,
     programs: [],
   },

@@ -54,12 +54,13 @@ export const addToPlayerCredits = addedCredits => ({
 });
 
 export const CREATE_ENEMY = 'CREATE_ENEMY';
-export const createEnemy = ({ name, firewallStrength, programs }) => ({
+export const createEnemy = enemy => ({
   type: CREATE_ENEMY,
   payload: {
-    name,
-    firewallStrength,
-    programs,
+    name: enemy.name,
+    firewallStrength: enemy.firewallStrength,
+    programs: enemy.programs,
+    difficulty: enemy.difficultyLevel,
   },
 });
 
