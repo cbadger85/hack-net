@@ -30,10 +30,9 @@ const Countdown = ({ initialTime = 59 }) => {
     const countdownTimer = setInterval(() => {
       if (timer > 0) {
         setTimer(timer - 1);
+        gameController(timer, initialTime);
       }
     }, 1000);
-
-    gameController(timer, initialTime);
 
     return () => {
       clearInterval(countdownTimer);

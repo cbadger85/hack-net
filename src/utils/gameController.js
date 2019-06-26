@@ -29,13 +29,7 @@ export default (time, initialTime) => {
     );
   }
 
-  if (time % 5 === 0) {
-    const length = enemyPrograms.length;
-    const enemyProgramIndex = Math.floor(Math.random() * length);
-    enemyPrograms[enemyProgramIndex].program();
-  }
-
-  if (time === 0) {
+  if (time === 1) {
     store.dispatch(actions.switchScreenToMainConsole());
 
     store.dispatch(
@@ -46,6 +40,13 @@ export default (time, initialTime) => {
     );
 
     store.dispatch(actions.setTerminalInactive());
+  }
+
+  if ((time - 1) % 5 === 0) {
+    const length = enemyPrograms.length;
+    const enemyProgramIndex = Math.floor(Math.random() * length);
+    enemyPrograms[enemyProgramIndex].program();
+    console.log(`program: ${enemyPrograms[enemyProgramIndex].name}`);
   }
 
   if (player.firewallStrength <= 0) {
