@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 
-import ConsoleBottom from './ConsoleBottom';
-
 const ConsoleOutput = ({ terminalOutput, runMode }) => {
   const showTerminalOutput = terminalOutput.map(terminalLine => (
     <div key={terminalLine.id} style={{ color: terminalLine.color }}>

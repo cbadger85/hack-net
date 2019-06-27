@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -22,23 +22,23 @@ const CountdownTitle = styled.h2`
   font-size: 1.2rem;
 `;
 
-const Countdown = ({ initialTime = 59 }) => {
+const Countdown = () => {
   const timer = useSelector(state => state.timer);
-  const screen = useSelector(state => state.game);
   const dispatch = useDispatch();
 
-  // const isRunMode = screen === 'run' ? true : false;
+  const initialTime = useRef(timer);
+
+  gameController(timer, initialTime.current);
 
   useEffect(() => {
     const countdownTimer = setInterval(() => {
       if (timer > 0) {
-        gameController(timer, initialTime);
         dispatch(setTick(timer - 1));
       }
 
-      // if (!isRunMode) {
-      //   clearInterval(countdownTimer);
-      // }
+      if (timer <= 0) {
+        clearInterval(countdownTimer);
+      }
     }, 1000);
 
     return () => {

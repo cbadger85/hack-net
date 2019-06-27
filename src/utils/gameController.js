@@ -3,22 +3,9 @@ import React from 'react';
 import store from '../store';
 import * as actions from '../store/actions';
 import colors from './colors';
-import Figlet from '../components/Figlet';
+import Corp from '../components/RunScreen/Corp';
 import EndGame from '../components/MainScreen/EndGame';
 import enemyPrograms from '../data/enemyPrograms';
-
-const Corp = ({ name }) => {
-  return (
-    <div>
-      <div>connecting...</div>
-      <div>connected successful</div>
-      <Figlet font="doom" color={colors.yellow}>
-        {name}
-      </Figlet>
-      <span style={{ color: colors.red }}>+++ INTRUSION DETECTED +++</span>
-    </div>
-  );
-};
 
 const difficulty = {
   easy: 10,

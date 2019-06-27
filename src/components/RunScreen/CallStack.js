@@ -43,7 +43,6 @@ const CallStack = () => {
       </CallStackTitleWrapper>
       <CallStackProgramWrapper ref={callStackScroll}>
         {callStack.map(program => program.output)}
-        {/* <div ref={callStackScroll} /> */}
       </CallStackProgramWrapper>
     </CallStackWrapper>
   );
