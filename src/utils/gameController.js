@@ -4,8 +4,8 @@ import store from '../store';
 import * as actions from '../store/actions';
 import colors from './colors';
 import Figlet from '../components/Figlet';
-import EndGame from '../components/EndGame';
-import enemyPrograms from './programs/enemyPrograms';
+import EndGame from '../components/MainScreen/EndGame';
+import enemyPrograms from '../data/enemyPrograms';
 
 const Corp = ({ name }) => {
   return (

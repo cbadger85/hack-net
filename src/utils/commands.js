@@ -4,7 +4,7 @@ import store from '../store';
 import * as actions from '../store/actions';
 import Timer from '../components/Timer';
 import colors from './colors';
-import enemyCorps from './enemyCorps';
+import enemyCorps from '../data/enemyCorps';
 
 export const timer = (args, props) => {
   store.dispatch(actions.setTerminalInactive());
@@ -93,6 +93,10 @@ export const displayRunner = args => {
 
 export const clearTerminal = args => {
   store.dispatch(actions.clearTerminalDisplay());
+};
+
+export const goShopping = args => {
+  store.dispatch(actions.switchScreenToStoreScreen());
 };
 
 export const error = (args, props) => {

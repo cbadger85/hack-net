@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Layout from './Layout';
+import Layout from '../Layout';
 import MainConsole from './MainConsole';
 
-const MainLayout = () => {
+const MainScreen = () => {
   return (
     <Layout>
       <MainConsole />
@@ -11,4 +11,4 @@ const MainLayout = () => {
   );
 };
 
-export default MainLayout;
+export default MainScreen;

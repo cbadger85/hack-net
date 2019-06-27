@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Figlet from './Figlet';
-import { setTick } from '../store/actions';
-import colors from '../utils/colors';
-import gameController from '../utils/gameController';
+import Figlet from '../Figlet';
+import { setTick } from '../../store/actions';
+import colors from '../../utils/colors';
+import gameController from '../../utils/gameController';
 
 const CountdownWrapper = styled.div`
   text-align: center;

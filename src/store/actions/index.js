@@ -87,6 +87,11 @@ export const switchScreenToMainConsole = () => ({
   type: SWITCH_SCREEN_TO_MAIN_CONSOLE,
 });
 
+export const SWITCH_TO_STORE_SCREEN = 'SWITCH_TO_STORE_SCREEN';
+export const switchScreenToStoreScreen = () => ({
+  type: SWITCH_TO_STORE_SCREEN,
+});
+
 export const ADD_TO_CALL_STACK = 'ADD_TO_CALL_STACK';
 export const addToCallStack = ({ component, id, memRequired }) => ({
   type: ADD_TO_CALL_STACK,

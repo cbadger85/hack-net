@@ -4,8 +4,8 @@ import nanoid from 'nanoid';
 import store from '../store';
 import * as actions from '../store/actions';
 import colors from './colors';
-import TimeToExecuteCountdown from '../components/TimeToExecuteCountdown';
-import programs from './programs/playerPrograms';
+import TimeToExecuteCountdown from '../components/RunScreen/TimeToExecuteCountdown';
+import programs from '../data/playerPrograms';
 
 const printScreen = (output, color = colors.blue) => {
   store.dispatch(

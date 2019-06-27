@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Console from './Console';
+import Console from '../Console';
 import {
   addToRunTerminalDisplay,
   addToRunTerminalHistory,
-} from '../store/actions';
-import * as runCommands from '../utils/runCommands';
+} from '../../store/actions';
+import * as runCommands from '../../utils/runCommands';
 
 const RunConsole = () => {
   const terminalOutput = useSelector(state => state.runTerminal.terminalOutput);

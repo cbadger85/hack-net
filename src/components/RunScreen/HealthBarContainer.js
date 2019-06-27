@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 
 import HealthBar from './HealthBar';
-import colors from '../utils/colors';
+import colors from '../../utils/colors';
 
 const HealthBarContainer = () => {
   const enemyFirewallStrength = useSelector(

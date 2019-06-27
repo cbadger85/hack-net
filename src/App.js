@@ -1,21 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import MainLayout from './components/MainLayout';
-import RunLayout from './components/RunLayout';
+import MainScreen from './components/MainScreen';
+import RunScreen from './components/RunScreen';
+import StoreScreen from './components/StoreScreen';
 
 const App = ({ screen }) => {
   switch (screen) {
     case 'run':
       return (
         <div>
-          <RunLayout />
+          <RunScreen />
+        </div>
+      );
+    case 'store':
+      return (
+        <div>
+          <StoreScreen />
         </div>
       );
     default:
       return (
         <div>
-          <MainLayout />
+          <MainScreen />
         </div>
       );
   }

@@ -1,6 +1,6 @@
-import store from '../../store';
-import * as actions from '../../store/actions';
-import colors from '../colors';
+import store from '../store';
+import * as actions from '../store/actions';
+import colors from '../utils/colors';
 
 const printSuccess = programName => {
   store.dispatch(
@@ -19,9 +19,6 @@ const isRunMode = () => {
 export default [
   {
     name: 'counter insertion agent',
-    tte: 3,
-    cost: 1000,
-    memRequired: 16,
     program: function() {
       isRunMode() && store.dispatch(actions.damagePlayerFirewall(5));
       printSuccess(this.name);
@@ -29,9 +26,6 @@ export default [
   },
   {
     name: 'reverse denial of service',
-    tte: 15,
-    cost: 2500,
-    memRequired: 32,
     program: function() {
       isRunMode() && store.dispatch(actions.damagePlayerFirewall(20));
       printSuccess(this.name);
@@ -39,8 +33,6 @@ export default [
   },
   {
     name: 'anti-viral doubler',
-    tte: 10,
-    memRequired: 16,
     program: function() {
       let timer = 12;
       const dotTimer = setInterval(() => {

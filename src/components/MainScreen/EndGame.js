@@ -1,6 +1,6 @@
 import React from 'react';
 
-import colors from '../utils/colors';
+import colors from '../../utils/colors';
 
 const OutOfTime = () => {
   return (

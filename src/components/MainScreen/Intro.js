@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Figlet from './Figlet';
-import colors from '../utils/colors';
+import Figlet from '../Figlet';
+import colors from '../../utils/colors';
 
 const Intro = () => {
   return (

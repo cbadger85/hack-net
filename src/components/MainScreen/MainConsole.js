@@ -1,14 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Console from './Console/';
+import Console from '../Console';
 import {
   addToTerminalHistory,
   addToTerminalDisplay,
   setTerminalActive,
-} from '../store/actions';
+} from '../../store/actions';
 
-import * as commands from '../utils/commands';
+import * as commands from '../../utils/commands';
 
 const MainConsole = () => {
   const terminalOutput = useSelector(state => state.terminal.terminalOutput);
@@ -44,6 +44,9 @@ const MainConsole = () => {
         break;
       case 'connect':
         commands.executeRun(args);
+        break;
+      case 'shop':
+        commands.goShopping();
         break;
       default:
         commands.error();

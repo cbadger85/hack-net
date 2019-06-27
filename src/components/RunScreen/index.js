@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Layout from './Layout';
+import Layout from '../Layout';
 import RunConsole from './RunConsole';
 import HealthBarContainer from './HealthBarContainer';
 import Countdown from './Countdown';
 import CallStack from './CallStack';
-import colors from '../utils/colors';
+import colors from '../../utils/colors';
 
 const HealthBarWrapper = styled.div`
   width: 100%;
@@ -28,7 +28,7 @@ const CountdownAndStacksWrapper = styled.div`
   border-left: 2px solid ${colors.blue};
 `;
 
-const RunLayout = () => {
+const RunScreen = () => {
   return (
     <Layout>
       <HealthBarWrapper className="health-row">
@@ -49,4 +49,4 @@ const RunLayout = () => {
   );
 };
 
-export default RunLayout;
+export default RunScreen;

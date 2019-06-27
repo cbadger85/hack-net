@@ -1,6 +1,6 @@
-import store from '../../store';
-import * as actions from '../../store/actions';
-import colors from '../colors';
+import store from '../store';
+import * as actions from '../store/actions';
+import colors from '../utils/colors';
 
 const printSuccess = programName => {
   store.dispatch(
@@ -19,6 +19,8 @@ const isRunMode = () => {
 export default [
   {
     name: 'ice-ice-breaker',
+    type: 'program',
+    unique: true,
     tte: 3,
     cost: 1000,
     memRequired: 16,
@@ -29,6 +31,8 @@ export default [
   },
   {
     name: 'set-them-up-the-bomb',
+    type: 'program',
+    unique: true,
     tte: 15,
     cost: 2500,
     memRequired: 32,
@@ -39,6 +43,8 @@ export default [
   },
   {
     name: 'nuke-em',
+    type: 'program',
+    unique: true,
     tte: 0,
     cost: 0,
     memRequired: 0,
@@ -49,7 +55,10 @@ export default [
   },
   {
     name: 'death-by-a-dozen-cuts',
+    type: 'program',
+    unique: true,
     tte: 10,
+    cost: 1500,
     memRequired: 16,
     program: function() {
       let timer = 12;

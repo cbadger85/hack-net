@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import { removeProgramFromCallstack } from '../store/actions';
-import colors from '../utils/colors';
+import { removeProgramFromCallstack } from '../../store/actions';
+import colors from '../../utils/colors';
 
 const TteCountdownWrapper = styled.div`
   text-align: center;
