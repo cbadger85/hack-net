@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import colors from '../utils/colors';
 
-const Layout = styled.div`
+const ScreenLayout = styled.div`
   width: 1200px;
   min-width: 1200px;
   height: 745px;
@@ -15,4 +15,4 @@ const Layout = styled.div`
   font-family: monospace;
 `;
 
-export default Layout;
+export default ScreenLayout;

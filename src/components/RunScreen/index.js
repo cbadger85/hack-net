@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Layout from '../Layout';
+import ScreenLayout from '../ScreenLayout';
 import RunConsole from './RunConsole';
 import HealthBarContainer from './HealthBarContainer';
 import Countdown from './Countdown';
@@ -30,7 +30,7 @@ const CountdownAndStacksWrapper = styled.div`
 
 const RunScreen = () => {
   return (
-    <Layout>
+    <ScreenLayout>
       <HealthBarWrapper className="health-row">
         <HealthBarContainer />
       </HealthBarWrapper>
@@ -45,7 +45,7 @@ const RunScreen = () => {
           </div>
         </CountdownAndStacksWrapper>
       </ConsoleAndStatusWrapper>
-    </Layout>
+    </ScreenLayout>
   );
 };
 

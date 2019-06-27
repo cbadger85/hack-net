@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Layout from '../Layout';
+import ScreenLayout from '../ScreenLayout';
 import MainConsole from './MainConsole';
 
 const MainScreen = () => {
   return (
-    <Layout>
+    <ScreenLayout>
       <MainConsole />
-    </Layout>
+    </ScreenLayout>
   );
 };
 

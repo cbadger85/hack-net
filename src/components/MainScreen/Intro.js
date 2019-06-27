@@ -10,7 +10,7 @@ const Intro = () => {
         Cyberpunk
       </Figlet>
       <div style={{ marginLeft: '35em' }}>
-        <Figlet font="pepper" isConsole>
+        <Figlet font="pepper" color={colors.pink} isConsole>
           1985
         </Figlet>
       </div>
