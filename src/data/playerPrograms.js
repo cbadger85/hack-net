@@ -35,7 +35,8 @@ export default [
     name: 'set-them-up-the-bomb',
     type: 'program',
     unique: true,
-    description: '',
+    description:
+      "A damaging worm that disables critical systems in targe's mainframe",
     tte: 15,
     cost: 2500,
     memRequired: 32,

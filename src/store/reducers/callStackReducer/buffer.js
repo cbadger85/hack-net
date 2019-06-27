@@ -4,7 +4,7 @@ import {
   CLEAR_CALL_STACK,
 } from '../../actions';
 
-export default (state = 64, { type, payload }) => {
+export default (state = 128, { type, payload }) => {
   switch (type) {
     case ADD_TO_CALL_STACK:
       return state - payload.memRequired;

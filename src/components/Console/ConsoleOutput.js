@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import ConsoleBottom from './ConsoleBottom';
 
@@ -8,6 +8,12 @@ const ConsoleOutput = ({ terminalOutput, runMode }) => {
       {terminalLine.output}
     </div>
   ));
+
+  const outputScroll = useRef();
+
+  useEffect(() => {
+    outputScroll.current.scrollTop = outputScroll.current.scrollHeight;
+  });
 
   const runModeStyles = runMode
     ? {
@@ -27,9 +33,9 @@ const ConsoleOutput = ({ terminalOutput, runMode }) => {
         width: '100%',
         ...runModeStyles,
       }}
+      ref={outputScroll}
     >
       {showTerminalOutput}
-      {runMode && <ConsoleBottom />}
     </div>
   );
 };

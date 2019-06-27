@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
@@ -19,9 +19,20 @@ const CallStackWrapper = styled.div`
   height: 100%;
 `;
 
+const CallStackProgramWrapper = styled.div`
+  width: 100%;
+  height: 352px;
+  overflow: scroll;
+`;
+
 const CallStack = () => {
   const callStack = useSelector(state => state.callStack.stack);
   const buffer = useSelector(state => state.callStack.buffer);
+  const callStackScroll = useRef();
+
+  useEffect(() => {
+    callStackScroll.current.scrollTop = callStackScroll.current.scrollHeight;
+  });
 
   return (
     <CallStackWrapper>
@@ -30,7 +41,10 @@ const CallStack = () => {
         <p>memory remaining</p>
         <h2>{buffer}</h2>
       </CallStackTitleWrapper>
-      {callStack.map(program => program.output)}
+      <CallStackProgramWrapper ref={callStackScroll}>
+        {callStack.map(program => program.output)}
+        {/* <div ref={callStackScroll} /> */}
+      </CallStackProgramWrapper>
     </CallStackWrapper>
   );
 };
