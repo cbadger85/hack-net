@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import ScreenLayout from '../ScreenLayout';
 import ButtonContainer from './ButtonContainer';
+import StoreItem from './StoreItem';
 import colors from '../../utils/colors';
 import storeItems from '../../data/storeItems';
 import Figlet from '../Figlet';
@@ -32,8 +33,17 @@ const StoreItemsLayout = styled.div`
   padding: 0 1em;
 `;
 
+const Credits = styled.div`
+  text-align: right;
+  width: 70%;
+  margin: auto;
+`;
+
 const StoreScreen = () => {
   console.log(storeItems);
+
+  const credits = `0000`;
+
   return (
     <ScreenLayout>
       <StoreLayout>
@@ -42,71 +52,11 @@ const StoreScreen = () => {
             STORE
           </Figlet>
         </HeaderContainer>
-        <div
-          style={{
-            textAlign: 'right',
-            color: colors.yellow,
-            width: '70%',
-            margin: 'auto',
-          }}
-        >
-          CREDITS: 0000
-        </div>
+        <Credits>
+          CREDITS: <span style={{ color: colors.yellow }}>{credits}</span>
+        </Credits>
         <StoreItemsLayout>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
+          <StoreItem />
         </StoreItemsLayout>
         <ButtonContainer />
       </StoreLayout>

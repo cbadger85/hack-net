@@ -102,6 +102,11 @@ export const addToCallStack = ({ component, id, memRequired }) => ({
   },
 });
 
+export const CLEAR_CALL_STACK = 'CLEAR_CALL_STACK';
+export const clearCallStack = () => ({
+  type: CLEAR_CALL_STACK,
+});
+
 export const REMOVE_PROGRAM_FROM_CALL_STACK = 'REMOVE_PROGRAM_FROM_CALL_STACK';
 export const removeProgramFromCallstack = (id, memRequired) => ({
   type: REMOVE_PROGRAM_FROM_CALL_STACK,

@@ -75,6 +75,8 @@ export default (time, initialTime) => {
     store.dispatch(actions.switchScreenToMainConsole());
     store.dispatch(actions.addToPlayerCredits(credits));
 
+    store.dispatch(actions.clearCallStack());
+
     store.dispatch(
       actions.addToTerminalDisplay({
         output: <EndGame condition={'WIN'} loot={credits} />,

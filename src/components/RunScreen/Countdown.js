@@ -24,7 +24,10 @@ const CountdownTitle = styled.h2`
 
 const Countdown = ({ initialTime = 59 }) => {
   const timer = useSelector(state => state.timer);
+  const screen = useSelector(state => state.game);
   const dispatch = useDispatch();
+
+  // const isRunMode = screen === 'run' ? true : false;
 
   useEffect(() => {
     const countdownTimer = setInterval(() => {
@@ -32,6 +35,10 @@ const Countdown = ({ initialTime = 59 }) => {
         gameController(timer, initialTime);
         dispatch(setTick(timer - 1));
       }
+
+      // if (!isRunMode) {
+      //   clearInterval(countdownTimer);
+      // }
     }, 1000);
 
     return () => {

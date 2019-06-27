@@ -21,11 +21,13 @@ export default [
     name: 'ice-ice-breaker',
     type: 'program',
     unique: true,
+    description:
+      "A lightly penetrating attack designed to test the target's defenses",
     tte: 3,
     cost: 1000,
-    memRequired: 16,
+    memRequired: 8,
     program: function() {
-      isRunMode() && store.dispatch(actions.damageEnemyFirewall(5));
+      isRunMode() && store.dispatch(actions.damageEnemyFirewall(3));
       printSuccess(this.name);
     },
   },
@@ -33,6 +35,7 @@ export default [
     name: 'set-them-up-the-bomb',
     type: 'program',
     unique: true,
+    description: '',
     tte: 15,
     cost: 2500,
     memRequired: 32,
@@ -41,22 +44,23 @@ export default [
       printSuccess(this.name);
     },
   },
+  // {
+  //   name: 'nuke-em',
+  //   type: 'program',
+  //   unique: true,
+  //   tte: 0,
+  //   cost: 0,
+  //   memRequired: 0,
+  //   program: function() {
+  //     isRunMode() && store.dispatch(actions.damageEnemyFirewall(100));
+  //     printSuccess(this.name);
+  //   },
+  // },
   {
-    name: 'nuke-em',
+    name: 'death-by-a-thousand-cuts',
     type: 'program',
     unique: true,
-    tte: 0,
-    cost: 0,
-    memRequired: 0,
-    program: function() {
-      isRunMode() && store.dispatch(actions.damageEnemyFirewall(100));
-      printSuccess(this.name);
-    },
-  },
-  {
-    name: 'death-by-a-dozen-cuts',
-    type: 'program',
-    unique: true,
+    description: "A brutal DDoS attack that overload's the target's firewall",
     tte: 10,
     cost: 1500,
     memRequired: 16,
