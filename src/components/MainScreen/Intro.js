@@ -14,7 +14,10 @@ const Intro = () => {
           1985
         </Figlet>
       </div>
-      <div>run create-runner [name] to begin...</div>
+      <div>
+        run <span style={{ color: colors.pink }}>create-runner [name] </span>
+        to begin...
+      </div>
     </div>
   );
 };

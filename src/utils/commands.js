@@ -31,7 +31,6 @@ export const echo = args => {
 
 export const createRunner = args => {
   const { player } = store.getState();
-  // loook into thunks
 
   if (player.name) {
     store.dispatch(
@@ -60,14 +59,23 @@ export const createRunner = args => {
     'death-by-a-dozen-cuts',
   ]; //! <- remove this after the store is up
 
-  const startingMemory = 128; //! <- initial player stuff
+  const startingMemory = 64; //! <- initial player stuff
 
-  store.dispatch(actions.createPlayer(args[0], programs, startingMemory)); //! <= remove this and add it to the store;
+  store.dispatch(actions.createPlayer(args[0], programs, startingMemory)); //! <= remove programs and add it to the store;
   const { player: newPlayer } = store.getState();
   store.dispatch(
     actions.addToTerminalDisplay({
       output: `Welcome ${newPlayer.name}`,
       color: colors.yellow,
+    })
+  );
+  store.dispatch(
+    actions.addToTerminalDisplay({
+      output: (
+        <div>
+          run <span style={{ color: colors.pink }}>shop</span> to buy your gear
+        </div>
+      ),
     })
   );
 };
@@ -98,6 +106,18 @@ export const clearTerminal = args => {
 };
 
 export const goShopping = args => {
+  const { player } = store.getState();
+
+  if (!player.name) {
+    store.dispatch(
+      actions.addToTerminalDisplay({
+        output: 'you need to create a runner first',
+        color: colors.red,
+      })
+    );
+    return;
+  }
+
   store.dispatch(actions.switchScreenToStoreScreen());
 };
 

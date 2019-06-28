@@ -24,7 +24,7 @@ export default [
     description:
       "A lightly penetrating attack designed to test the target's defenses",
     tte: 3,
-    cost: 6000,
+    cost: 1000,
     memRequired: 8,
     program: function() {
       isRunMode() && store.dispatch(actions.damageEnemyFirewall(3));

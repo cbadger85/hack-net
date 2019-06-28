@@ -38,6 +38,10 @@ const Credits = styled.div`
   text-align: right;
   width: 80%;
   margin: auto;
+
+  span {
+    color: ${props => (props.credits < 0 ? colors.red : colors.yellow)};
+  }
 `;
 
 const StoreScreen = () => {
@@ -59,7 +63,13 @@ const StoreScreen = () => {
       })
     );
 
-    // TODO: remove credits for purchased
+    const purchasedItem = items.find(item => item.name === name);
+    if (purchasedItem.purchased) {
+      setCredits(credits => credits + purchasedItem.cost);
+      return;
+    }
+
+    setCredits(credits => credits - purchasedItem.cost);
   };
 
   // TODO: dispatch actions modifying the players programs, credits, and stats by purchase
@@ -72,8 +82,8 @@ const StoreScreen = () => {
             STORE
           </Figlet>
         </HeaderContainer>
-        <Credits>
-          CREDITS: <span style={{ color: colors.yellow }}>{credits}</span>
+        <Credits credits={credits}>
+          CREDITS: <span>{credits}</span>
         </Credits>
         <StoreItemsLayout>
           {items.map(item => (

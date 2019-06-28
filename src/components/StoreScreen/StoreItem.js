@@ -22,7 +22,7 @@ const Checkbox = styled.input`
     white-space: pre;
     font-size: 1.4rem;
     position: absolute;
-    top: 0.5em;
+    top: 0.6em;
     right: 0px;
     color: ${props => (props.isSoldOut ? colors.red : colors.blue)};
   }
@@ -39,9 +39,13 @@ const Checkbox = styled.input`
     content: '[*]';
     font-size: 1.4rem;
     position: absolute;
-    top: 0.5em;
+    top: 0.6em;
     right: 0px;
     color: ${colors.green};
+  }
+
+  &:checked:focus:after {
+    color: ${colors.yellow};
   }
 `;
 
@@ -54,10 +58,6 @@ const StoreItem = ({
   credits,
 }) => {
   const handleOnClick = () => {
-    if (credits - cost < 0) {
-      return;
-    }
-
     clickItem(name);
   };
 
@@ -71,7 +71,9 @@ const StoreItem = ({
       />
       <div style={{ padding: '1em', width: '30%' }}>{name}</div>
       <div style={{ padding: '1em', width: '56%' }}>{description}</div>
-      <div style={{ padding: '1em', width: '10%' }}>{cost}</div>
+      <div style={{ padding: '.5em', width: '10%', textAlign: 'right' }}>
+        {cost}
+      </div>
     </StoreItemWrapper>
   );
 };

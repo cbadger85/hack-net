@@ -2,7 +2,11 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import { switchScreenToMainConsole } from '../../store/actions';
+import {
+  switchScreenToMainConsole,
+  clearTerminalDisplay,
+  addToTerminalDisplay,
+} from '../../store/actions';
 import colors from '../../utils/colors';
 
 const ButtonLayout = styled.div`
@@ -37,6 +41,23 @@ const ButtonContainer = () => {
 
   const handleCancel = e => {
     dispatch(switchScreenToMainConsole());
+    dispatch(clearTerminalDisplay());
+    dispatch(
+      addToTerminalDisplay({
+        output: 'Thank you for visiting!',
+        color: colors.yellow,
+      })
+    );
+    dispatch(
+      addToTerminalDisplay({
+        output: (
+          <div>
+            run <span style={{ color: colors.pink }}>help</span> to learn how to
+            play
+          </div>
+        ),
+      })
+    );
   };
 
   return (
