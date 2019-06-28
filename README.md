@@ -2,7 +2,8 @@
 
 ## Store
 
-- add descriptions to all products
+<!-- - add descriptions to all products -->
+
 - dynamically generate checkbox inputs and store in state
 - check store for products already owned and ensure they aren't in the store.
 - send purchased items tp player inventory and dispatch actions as neccessary

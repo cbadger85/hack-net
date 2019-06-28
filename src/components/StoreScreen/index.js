@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import ScreenLayout from '../ScreenLayout';
@@ -18,7 +19,7 @@ const StoreLayout = styled.div`
 const HeaderContainer = styled.div`
   margin: auto;
   height: 25%;
-  width: 70%;
+  width: 80%;
   text-align: center;
   padding: 1em;
   padding-bottom: 0;
@@ -28,21 +29,40 @@ const StoreItemsLayout = styled.div`
   margin: auto;
   height: 55%;
   overflow-y: scroll;
-  width: 70%;
+  width: 80%;
   border: 1px solid ${colors.blue};
   padding: 0 1em;
 `;
 
 const Credits = styled.div`
   text-align: right;
-  width: 70%;
+  width: 80%;
   margin: auto;
 `;
 
 const StoreScreen = () => {
-  console.log(storeItems);
+  // TODO: filter store items by programs purchased by player
+  const initialCredits = useSelector(state => state.player.credits);
+  const [items, setItems] = useState(
+    storeItems.map(item => ({ ...item, purchased: false }))
+  );
+  const [credits, setCredits] = useState(initialCredits);
 
-  const credits = `0000`;
+  const handleClickItem = name => {
+    setItems(
+      items.map(item => {
+        if (item.name !== name) {
+          return item;
+        }
+
+        return { ...item, purchased: !item.purchased };
+      })
+    );
+
+    // TODO: remove credits for purchased
+  };
+
+  // TODO: dispatch actions modifying the players programs, credits, and stats by purchase
 
   return (
     <ScreenLayout>
@@ -56,7 +76,18 @@ const StoreScreen = () => {
           CREDITS: <span style={{ color: colors.yellow }}>{credits}</span>
         </Credits>
         <StoreItemsLayout>
-          <StoreItem />
+          {items.map(item => (
+            <StoreItem
+              name={item.name}
+              description={item.description}
+              cost={item.cost}
+              purchased={item.purchased}
+              key={item.name}
+              id={item.name}
+              clickItem={handleClickItem}
+              credits={credits}
+            />
+          ))}
         </StoreItemsLayout>
         <ButtonContainer />
       </StoreLayout>

@@ -3,6 +3,14 @@ import styled from 'styled-components';
 
 import colors from '../../utils/colors';
 
+const StoreItemWrapper = styled.div`
+  display: flex;
+  align-items: top;
+  width: 100%;
+  justify-content: center;
+  color: ${props => (props.isSoldOut ? colors.red : colors.blue)};
+`;
+
 const Checkbox = styled.input`
   padding: 1em;
   appearance: none;
@@ -14,9 +22,9 @@ const Checkbox = styled.input`
     white-space: pre;
     font-size: 1.4rem;
     position: absolute;
-    bottom: 0px;
+    top: 0.5em;
     right: 0px;
-    color: ${colors.blue};
+    color: ${props => (props.isSoldOut ? colors.red : colors.blue)};
   }
 
   &:focus {
@@ -31,20 +39,40 @@ const Checkbox = styled.input`
     content: '[*]';
     font-size: 1.4rem;
     position: absolute;
-    bottom: 0px;
+    top: 0.5em;
     right: 0px;
     color: ${colors.green};
   }
 `;
 
-const StoreItem = ({ id = 0 }) => {
+const StoreItem = ({
+  name,
+  description,
+  cost,
+  purchased,
+  clickItem,
+  credits,
+}) => {
+  const handleOnClick = () => {
+    if (credits - cost < 0) {
+      return;
+    }
+
+    clickItem(name);
+  };
+
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <Checkbox type="checkbox" id={id} />
-      <div style={{ padding: '1em' }}>name</div>
-      <div style={{ padding: '1em' }}>description</div>
-      <div style={{ padding: '1em' }}>cost</div>
-    </div>
+    <StoreItemWrapper onClick={handleOnClick} isSoldOut={credits - cost < 0}>
+      <Checkbox
+        type="checkbox"
+        checked={purchased}
+        onChange={() => null}
+        isSoldOut={credits - cost < 0}
+      />
+      <div style={{ padding: '1em', width: '30%' }}>{name}</div>
+      <div style={{ padding: '1em', width: '56%' }}>{description}</div>
+      <div style={{ padding: '1em', width: '10%' }}>{cost}</div>
+    </StoreItemWrapper>
   );
 };
 

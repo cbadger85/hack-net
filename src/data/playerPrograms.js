@@ -24,7 +24,7 @@ export default [
     description:
       "A lightly penetrating attack designed to test the target's defenses",
     tte: 3,
-    cost: 1000,
+    cost: 6000,
     memRequired: 8,
     program: function() {
       isRunMode() && store.dispatch(actions.damageEnemyFirewall(3));
@@ -45,18 +45,18 @@ export default [
       printSuccess(this.name);
     },
   },
-  {
-    name: 'nuke-em',
-    type: 'program',
-    unique: true,
-    tte: 0,
-    cost: 0,
-    memRequired: 0,
-    program: function() {
-      isRunMode() && store.dispatch(actions.damageEnemyFirewall(100));
-      printSuccess(this.name);
-    },
-  },
+  // {
+  //   name: 'nuke-em',
+  //   type: 'program',
+  //   unique: true,
+  //   tte: 0,
+  //   cost: 0,
+  //   memRequired: 0,
+  //   program: function() {
+  //     isRunMode() && store.dispatch(actions.damageEnemyFirewall(100));
+  //     printSuccess(this.name);
+  //   },
+  // },
   {
     name: 'death-by-a-thousand-cuts',
     type: 'program',
