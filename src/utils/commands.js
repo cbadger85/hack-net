@@ -58,9 +58,11 @@ export const createRunner = args => {
     'set-them-up-the-bomb',
     'nuke-em',
     'death-by-a-dozen-cuts',
-  ]; //! <- add programs purchased in store here.
+  ]; //! <- remove this after the store is up
 
-  store.dispatch(actions.createPlayer(args[0], programs));
+  const startingMemory = 128;
+
+  store.dispatch(actions.createPlayer(args[0], programs, startingMemory)); //! <= remove this and add it to the store;
   const { player: newPlayer } = store.getState();
   store.dispatch(
     actions.addToTerminalDisplay({
@@ -134,6 +136,8 @@ export const executeRun = args => {
   }
 
   const firewallStrength = store.getState().player.maxPlayerHealth;
+  const memoryBuffer = store.getState().player.memoryBuffer;
+  store.dispatch(actions.setBufferAmount(memoryBuffer));
   store.dispatch(actions.createEnemy(enemyCorps[args[0]]));
   store.dispatch(actions.switchScreenToRunConsole(firewallStrength));
   store.dispatch(actions.clearTerminalDisplay());

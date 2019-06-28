@@ -42,9 +42,9 @@ export const addToRunTerminalDisplay = ({ output, color = '' }) => ({
 });
 
 export const CREATE_PLAYER = 'CREATE_PLAYER';
-export const createPlayer = (name, programs) => ({
+export const createPlayer = (name, programs, memory) => ({
   type: CREATE_PLAYER,
-  payload: { name, programs },
+  payload: { name, programs, memory },
 });
 
 export const ADD_TO_PLAYER_CREDITS = 'ADD_TO_PLAYER_CREDITS';
@@ -92,6 +92,12 @@ export const switchScreenToStoreScreen = () => ({
   type: SWITCH_TO_STORE_SCREEN,
 });
 
+export const SET_BUFFER_AMOUNT = 'SET_BUFFER_AMOUNT';
+export const setBufferAmount = buffer => ({
+  type: SET_BUFFER_AMOUNT,
+  payload: buffer,
+});
+
 export const ADD_TO_CALL_STACK = 'ADD_TO_CALL_STACK';
 export const addToCallStack = ({ component, id, memRequired }) => ({
   type: ADD_TO_CALL_STACK,
@@ -111,6 +117,12 @@ export const REMOVE_PROGRAM_FROM_CALL_STACK = 'REMOVE_PROGRAM_FROM_CALL_STACK';
 export const removeProgramFromCallstack = (id, memRequired) => ({
   type: REMOVE_PROGRAM_FROM_CALL_STACK,
   payload: { id, memRequired },
+});
+
+export const ADD_TO_MEMORY_BUFFER = 'ADD_TO_MEMORY_BUFFER';
+export const addToMemoryBuffer = upgradeAmount => ({
+  type: ADD_TO_MEMORY_BUFFER,
+  payload: upgradeAmount,
 });
 
 export const TICK = 'TICK';
