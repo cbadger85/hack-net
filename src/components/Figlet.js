@@ -34,7 +34,9 @@ const Figlet = ({
   const [figletText, setFigletText] = useState('');
 
   useEffect(() => {
-    getFigletPromise(children, font).then(data => setFigletText(data));
+    getFigletPromise(children, font)
+      .then(data => setFigletText(data))
+      .catch(e => console.log(e));
   }, [children, font]);
 
   return (

@@ -60,7 +60,7 @@ export const createRunner = args => {
     'death-by-a-dozen-cuts',
   ]; //! <- remove this after the store is up
 
-  const startingMemory = 128;
+  const startingMemory = 128; //! <- initial player stuff
 
   store.dispatch(actions.createPlayer(args[0], programs, startingMemory)); //! <= remove this and add it to the store;
   const { player: newPlayer } = store.getState();

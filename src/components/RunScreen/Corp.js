@@ -8,7 +8,7 @@ const Corp = ({ name }) => {
     <div>
       <div>connecting...</div>
       <div>connected successful</div>
-      <Figlet font="doom" color={colors.yellow}>
+      <Figlet font="doom2" color={colors.yellow}>
         {name}
       </Figlet>
       <span style={{ color: colors.red }}>+++ INTRUSION DETECTED +++</span>
