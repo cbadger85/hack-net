@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import ScreenLayout from '../ScreenLayout';
 import ButtonContainer from './ButtonContainer';
 import StoreItem from './StoreItem';
+import Figlet from '../Figlet';
+import * as actions from '../../store/actions';
 import colors from '../../utils/colors';
 import storeItems from '../../data/storeItems';
-import Figlet from '../Figlet';
 
 const StoreLayout = styled.div`
   width: 100%;
@@ -46,6 +47,7 @@ const Credits = styled.div`
 
 const StoreScreen = () => {
   // TODO: filter store items by programs purchased by player
+  const dispatch = useDispatch();
   const initialCredits = useSelector(state => state.player.credits);
   const [items, setItems] = useState(
     storeItems.map(item => ({ ...item, purchased: false }))
@@ -72,7 +74,36 @@ const StoreScreen = () => {
     setCredits(credits => credits - purchasedItem.cost);
   };
 
-  // TODO: dispatch actions modifying the players programs, credits, and stats by purchase
+  const handleCheckout = () => {
+    if (initialCredits - credits < 0 || initialCredits === credits) {
+      return;
+    }
+
+    dispatch(actions.makePurchase(initialCredits - credits));
+    // TODO: add player programs and stats
+    dispatch(actions.switchScreenToMainConsole());
+  };
+
+  const handleCancel = () => {
+    dispatch(actions.switchScreenToMainConsole());
+    dispatch(
+      actions.addToTerminalDisplay({
+        output:
+          'Thank you for visiting! Feel free to come back and improve your deck!',
+        color: colors.yellow,
+      })
+    );
+    dispatch(
+      actions.addToTerminalDisplay({
+        output: (
+          <div>
+            run <span style={{ color: colors.pink }}>help</span> to learn how to
+            play
+          </div>
+        ),
+      })
+    );
+  };
 
   return (
     <ScreenLayout>
@@ -99,7 +130,7 @@ const StoreScreen = () => {
             />
           ))}
         </StoreItemsLayout>
-        <ButtonContainer />
+        <ButtonContainer checkout={handleCheckout} cancel={handleCancel} />
       </StoreLayout>
     </ScreenLayout>
   );

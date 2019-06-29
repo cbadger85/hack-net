@@ -1,4 +1,4 @@
-import { CREATE_PLAYER } from '../../actions';
+import { CREATE_PLAYER, MAKE_PURCHASE } from '../../actions';
 import { ADD_TO_PLAYER_CREDITS } from '../../actions';
 
 export default (state = 0, { type, payload }) => {
@@ -7,6 +7,8 @@ export default (state = 0, { type, payload }) => {
       return 5000;
     case ADD_TO_PLAYER_CREDITS:
       return state + payload;
+    case MAKE_PURCHASE:
+      return state - payload;
     default:
       return state;
   }

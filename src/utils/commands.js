@@ -55,8 +55,8 @@ export const createRunner = args => {
   const programs = [
     'ice-ice-breaker',
     'set-them-up-the-bomb',
-    'nuke-em',
-    'death-by-a-dozen-cuts',
+    // 'nuke-em',
+    'death-by-a-thousand-cuts',
   ]; //! <- remove this after the store is up
 
   const startingMemory = 64; //! <- initial player stuff
@@ -160,5 +160,4 @@ export const executeRun = args => {
   store.dispatch(actions.setBufferAmount(memoryBuffer));
   store.dispatch(actions.createEnemy(enemyCorps[args[0]]));
   store.dispatch(actions.switchScreenToRunConsole(firewallStrength));
-  store.dispatch(actions.clearTerminalDisplay());
 };

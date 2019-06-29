@@ -1,12 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import {
-  switchScreenToMainConsole,
-  clearTerminalDisplay,
-  addToTerminalDisplay,
-} from '../../store/actions';
 import colors from '../../utils/colors';
 
 const ButtonLayout = styled.div`
@@ -36,34 +30,13 @@ const Button = styled.button`
   }
 `;
 
-const ButtonContainer = () => {
-  const dispatch = useDispatch();
-
-  const handleCancel = e => {
-    dispatch(switchScreenToMainConsole());
-    dispatch(clearTerminalDisplay());
-    dispatch(
-      addToTerminalDisplay({
-        output: 'Thank you for visiting!',
-        color: colors.yellow,
-      })
-    );
-    dispatch(
-      addToTerminalDisplay({
-        output: (
-          <div>
-            run <span style={{ color: colors.pink }}>help</span> to learn how to
-            play
-          </div>
-        ),
-      })
-    );
-  };
-
+const ButtonContainer = ({ checkout, cancel }) => {
   return (
     <ButtonLayout>
-      <Button type="button">Checkout</Button>
-      <Button type="button" cancel onClick={handleCancel}>
+      <Button type="button" onClick={checkout}>
+        Checkout
+      </Button>
+      <Button type="button" cancel onClick={cancel}>
         Cancel
       </Button>
     </ButtonLayout>
