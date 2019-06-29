@@ -75,12 +75,27 @@ const StoreScreen = () => {
   };
 
   const handleCheckout = () => {
-    if (initialCredits - credits < 0 || initialCredits === credits) {
+    if (credits < 0 || initialCredits === credits) {
       return;
     }
 
-    dispatch(actions.makePurchase(initialCredits - credits));
     // TODO: add player programs and stats
+    const programs = items
+      .filter(item => item.purchased && item.type === 'program')
+      .map(program => program.name);
+
+    const memoryBuff = 0;
+
+    const firewallBuff = 0;
+
+    dispatch(
+      actions.purchaseItems({
+        cost: initialCredits - credits,
+        programs,
+        memoryBuff,
+        firewallBuff,
+      })
+    );
     dispatch(actions.switchScreenToMainConsole());
   };
 

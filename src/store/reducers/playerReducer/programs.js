@@ -1,10 +1,9 @@
-import { CREATE_PLAYER } from '../../actions';
+import { PURCHASE_ITEMS } from '../../actions';
 
 export default (state = [], { type, payload }) => {
   switch (type) {
-    case CREATE_PLAYER:
-      // return state;
-      return payload.programs;
+    case PURCHASE_ITEMS:
+      return [...state, ...payload.programs];
     default:
       return state;
   }

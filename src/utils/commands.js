@@ -52,16 +52,16 @@ export const createRunner = args => {
     return;
   }
 
-  const programs = [
-    'ice-ice-breaker',
-    'set-them-up-the-bomb',
-    // 'nuke-em',
-    'death-by-a-thousand-cuts',
-  ]; //! <- remove this after the store is up
+  // const programs = [
+  //   'ice-ice-breaker',
+  //   'set-them-up-the-bomb',
+  //   // 'nuke-em',
+  //   'death-by-a-thousand-cuts',
+  // ]; //! <- remove this after the store is up
 
-  const startingMemory = 64; //! <- initial player stuff
+  // const startingMemory = 64; //! <- initial player stuff
 
-  store.dispatch(actions.createPlayer(args[0], programs, startingMemory)); //! <= remove programs and add it to the store;
+  store.dispatch(actions.createPlayer(args[0])); //! <= remove programs and add it to the store;
   const { player: newPlayer } = store.getState();
   store.dispatch(
     actions.addToTerminalDisplay({
@@ -137,6 +137,16 @@ export const executeRun = args => {
     store.dispatch(
       actions.addToTerminalDisplay({
         output: 'you need to create a runner first',
+        color: colors.red,
+      })
+    );
+    return;
+  }
+
+  if (player.programs.length === 0) {
+    store.dispatch(
+      actions.addToTerminalDisplay({
+        output: 'you should buy some programs first',
         color: colors.red,
       })
     );

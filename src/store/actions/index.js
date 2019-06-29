@@ -42,21 +42,15 @@ export const addToRunTerminalDisplay = ({ output, color = '' }) => ({
 });
 
 export const CREATE_PLAYER = 'CREATE_PLAYER';
-export const createPlayer = (name, programs, memory) => ({
+export const createPlayer = name => ({
   type: CREATE_PLAYER,
-  payload: { name, programs, memory },
+  payload: { name },
 });
 
 export const ADD_TO_PLAYER_CREDITS = 'ADD_TO_PLAYER_CREDITS';
 export const addToPlayerCredits = addedCredits => ({
   type: ADD_TO_PLAYER_CREDITS,
   payload: addedCredits,
-});
-
-export const MAKE_PURCHASE = 'MAKE_PURCHASE';
-export const makePurchase = cost => ({
-  type: MAKE_PURCHASE,
-  payload: cost,
 });
 
 export const INCREASE_PLAYER_HEALTH = 'INCREASE_PLAYER_HEALTH';
@@ -140,4 +134,15 @@ export const addToMemoryBuffer = upgradeAmount => ({
 export const TICK = 'TICK';
 export const setTick = () => ({
   type: TICK,
+});
+
+export const PURCHASE_ITEMS = 'PURCHASE_ITEMS';
+export const purchaseItems = ({
+  programs,
+  memoryBuff = 0,
+  firewallBuff = 0,
+  cost,
+}) => ({
+  type: PURCHASE_ITEMS,
+  payload: { programs, memoryBuff, firewallBuff, cost },
 });
