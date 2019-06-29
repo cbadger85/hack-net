@@ -17,13 +17,6 @@
 
 ## Misc
 
-- show [args]
-  - runner - shows runners name
-  - credits - shows runners credits
-  - mem - shows runners memory
-  - programs - shows runners programs
-  - target corporations
-  - all (all of the above)
 - add history on up/down arrows so people can re-run previous commands
 - update gameover with GAME OVER figlet using poison font
 - add damage ticker

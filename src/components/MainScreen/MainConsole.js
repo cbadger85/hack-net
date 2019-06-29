@@ -35,9 +35,6 @@ const MainConsole = () => {
       case 'create-runner':
         commands.createRunner(args);
         break;
-      case 'display-runner':
-        commands.displayRunner(args);
-        break;
       case 'clear':
         commands.clearTerminal();
         break;

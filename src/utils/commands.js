@@ -56,27 +56,6 @@ export const createRunner = args => {
   );
 };
 
-export const displayRunner = args => {
-  const { player } = store.getState();
-
-  if (!player.name) {
-    store.dispatch(
-      actions.addToTerminalDisplay({
-        output: 'you need to create a runner first',
-        color: colors.red,
-      })
-    );
-    return;
-  }
-
-  store.dispatch(
-    actions.addToTerminalDisplay({
-      output: player.name,
-      color: colors.yellow,
-    })
-  );
-};
-
 export const clearTerminal = args => {
   store.dispatch(actions.clearTerminalDisplay());
 };
