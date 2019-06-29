@@ -8,6 +8,11 @@
   - connect [corp]
   - shop
   - show
+- explain a run
+  - how to execute programs
+  - how TTE works
+  - how enemy attacks work
+  - win/lose conditions
 
 ## Misc
 
@@ -20,6 +25,7 @@
   - all (all of the above)
 - add history on up/down arrows so people can re-run previous commands
 - update gameover with GAME OVER figlet using poison font
+- add damage ticker
 - add reset command
 - add reset button to gameover screen
 - add 'good job' figlet when defeating corps
