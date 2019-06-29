@@ -2,8 +2,7 @@
 
 ## Store
 
-- send purchased items tp player inventory and dispatch actions as neccessary
-- check store for products already owned and ensure they aren't in the store.
+- send purchased items to player inventory and dispatch actions as neccessary
 - verify all products work correctly
 
 ## Help

@@ -46,12 +46,19 @@ const Credits = styled.div`
 `;
 
 const StoreScreen = () => {
-  // TODO: filter store items by programs purchased by player
   const dispatch = useDispatch();
+
+  const ownedPrograms = useSelector(state => state.player.programs);
+
+  const initialStoreItems = storeItems
+    .filter(item => !ownedPrograms.includes(item.name))
+    .map(item => ({
+      ...item,
+      purchased: false,
+    }));
+
   const initialCredits = useSelector(state => state.player.credits);
-  const [items, setItems] = useState(
-    storeItems.map(item => ({ ...item, purchased: false }))
-  );
+  const [items, setItems] = useState(initialStoreItems);
   const [credits, setCredits] = useState(initialCredits);
 
   const handleClickItem = name => {
