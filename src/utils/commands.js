@@ -150,9 +150,110 @@ export const executeRun = args => {
 };
 
 export const show = args => {
-  switch (args) {
+  const { player } = store.getState();
+  console.log(args);
+  switch (args[0]) {
+    case 'runner':
+      store.dispatch(
+        actions.addToTerminalDisplay({
+          output: player.name ? (
+            <>
+              runner:{' '}
+              <span style={{ color: colors.green }}>${player.name}</span>
+            </>
+          ) : (
+            <span style={{ color: colors.red }}>
+              you need to create a runner and give it a name
+            </span>
+          ),
+          color: colors.yellow,
+        })
+      );
+      break;
+
+    case 'credits':
+      store.dispatch(
+        actions.addToTerminalDisplay({
+          output:
+            !player.credits && !player.name ? (
+              <span style={{ color: colors.red }}>
+                create a runner to gain credits
+              </span>
+            ) : (
+              `${player.credits} credits`
+            ),
+          color: colors.yellow,
+        })
+      );
+      break;
+    case 'memory':
+      store.dispatch(
+        actions.addToTerminalDisplay({
+          output: `you have ${player.memoryBuffer}kb of memory`,
+          color: colors.yellow,
+        })
+      );
+      break;
+    case 'programs':
+      store.dispatch(
+        actions.addToTerminalDisplay({
+          output: player.programs.length ? (
+            <div>
+              <div>programs:</div>
+              {player.programs.map(program => (
+                <div key={`${Date.now()}-${program}`}>{program}</div>
+              ))}
+            </div>
+          ) : (
+            <span style={{ color: colors.red }}>you need to buy programs</span>
+          ),
+          color: colors.yellow,
+        })
+      );
+      break;
+    case 'all':
+      [['runner'], ['credits'], ['memory'], ['programs']].forEach(command =>
+        show(command)
+      );
+      break;
     default:
-      // show list of all show sub commands
+      store.dispatch(
+        actions.addToTerminalDisplay({
+          output: (
+            <>
+              <div>show [command]</div>
+              <div style={{ marginLeft: '1em' }}>
+                <div>commands:</div>
+                <div>
+                  runner:{' '}
+                  <span style={{ color: colors.green }}>
+                    displays the runner's name
+                  </span>
+                </div>
+                <div>
+                  credits:{' '}
+                  <span style={{ color: colors.green }}>
+                    displays the number of credit the runner has
+                  </span>
+                </div>
+                <div>
+                  memory:{' '}
+                  <span style={{ color: colors.green }}>
+                    displays the amount of memory the runner's rig has
+                  </span>
+                </div>
+                <div>
+                  programs:{' '}
+                  <span style={{ color: colors.green }}>
+                    displays the programs the runner has available in a run
+                  </span>
+                </div>
+              </div>
+            </>
+          ),
+          color: colors.yellow,
+        })
+      );
       return;
   }
 };
