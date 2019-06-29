@@ -1,11 +1,11 @@
-import { CREATE_PLAYER, INCREASE_PLAYER_HEALTH } from '../../actions';
+import { CREATE_PLAYER, PURCHASE_ITEMS } from '../../actions';
 
 export default (state = 0, { type, payload }) => {
   switch (type) {
     case CREATE_PLAYER:
       return 100;
-    case INCREASE_PLAYER_HEALTH:
-      return payload + state;
+    case PURCHASE_ITEMS:
+      return payload.firewallBuff + state;
     default:
       return state;
   }

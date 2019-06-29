@@ -91,9 +91,20 @@ const StoreScreen = () => {
       .filter(item => item.purchased && item.type === 'program')
       .map(program => program.name);
 
-    const memoryBuff = 0;
+    const memoryBuff = items
+      .filter(item => item.purchased && item.type === 'memory-increase')
+      .reduce((acc, item) => {
+        return acc + item.amount;
+      }, 0);
 
-    const firewallBuff = 0;
+    const firewallBuff = items
+      .filter(item => item.purchased && item.type === 'firewall-increase')
+      .reduce((acc, item) => {
+        return acc + item.amount;
+      }, 0);
+
+    console.log('firewall buff', firewallBuff);
+    console.log('memory buff', memoryBuff);
 
     dispatch(
       actions.purchaseItems({

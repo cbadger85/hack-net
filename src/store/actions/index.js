@@ -53,12 +53,6 @@ export const addToPlayerCredits = addedCredits => ({
   payload: addedCredits,
 });
 
-export const INCREASE_PLAYER_HEALTH = 'INCREASE_PLAYER_HEALTH';
-export const increasePlayerHealth = amount => ({
-  type: INCREASE_PLAYER_HEALTH,
-  payload: amount,
-});
-
 export const CREATE_ENEMY = 'CREATE_ENEMY';
 export const createEnemy = enemy => ({
   type: CREATE_ENEMY,
@@ -125,12 +119,6 @@ export const removeProgramFromCallstack = (id, memRequired) => ({
   payload: { id, memRequired },
 });
 
-export const ADD_TO_MEMORY_BUFFER = 'ADD_TO_MEMORY_BUFFER';
-export const addToMemoryBuffer = upgradeAmount => ({
-  type: ADD_TO_MEMORY_BUFFER,
-  payload: upgradeAmount,
-});
-
 export const TICK = 'TICK';
 export const setTick = () => ({
   type: TICK,
@@ -139,8 +127,8 @@ export const setTick = () => ({
 export const PURCHASE_ITEMS = 'PURCHASE_ITEMS';
 export const purchaseItems = ({
   programs,
-  memoryBuff = 0,
-  firewallBuff = 0,
+  memoryBuff,
+  firewallBuff,
   cost,
 }) => ({
   type: PURCHASE_ITEMS,
