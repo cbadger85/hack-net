@@ -103,9 +103,6 @@ const StoreScreen = () => {
         return acc + item.amount;
       }, 0);
 
-    console.log('firewall buff', firewallBuff);
-    console.log('memory buff', memoryBuff);
-
     dispatch(
       actions.purchaseItems({
         cost: initialCredits - credits,

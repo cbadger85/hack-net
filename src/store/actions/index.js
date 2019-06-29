@@ -61,6 +61,7 @@ export const createEnemy = enemy => ({
     firewallStrength: enemy.firewallStrength,
     programs: enemy.programs,
     difficulty: enemy.difficultyLevel,
+    credits: enemy.credits,
   },
 });
 

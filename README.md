@@ -13,6 +13,7 @@
   - how TTE works
   - how enemy attacks work
   - win/lose conditions
+- explain the shop
 
 ## Misc
 

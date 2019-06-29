@@ -108,6 +108,7 @@ export const error = input => {
 
 export const executeRun = args => {
   const { player } = store.getState();
+  const [enemyCorp] = args;
 
   if (!player.name) {
     store.dispatch(
@@ -131,7 +132,7 @@ export const executeRun = args => {
 
   const listOfEnemyCorps = Object.keys(enemyCorps);
 
-  if (!listOfEnemyCorps.includes(args[0])) {
+  if (!listOfEnemyCorps.includes(enemyCorp)) {
     store.dispatch(
       actions.addToTerminalDisplay({
         output: "That connection doesn't exist",
@@ -144,6 +145,14 @@ export const executeRun = args => {
   const firewallStrength = store.getState().player.maxPlayerHealth;
   const memoryBuffer = store.getState().player.memoryBuffer;
   store.dispatch(actions.setBufferAmount(memoryBuffer));
-  store.dispatch(actions.createEnemy(enemyCorps[args[0]]));
+  store.dispatch(actions.createEnemy(enemyCorps[enemyCorp]));
   store.dispatch(actions.switchScreenToRunConsole(firewallStrength));
+};
+
+export const show = args => {
+  switch (args) {
+    default:
+      // show list of all show sub commands
+      return;
+  }
 };

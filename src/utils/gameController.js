@@ -5,7 +5,7 @@ import * as actions from '../store/actions';
 import colors from './colors';
 import Corp from '../components/RunScreen/Corp';
 import EndGame from '../components/MainScreen/EndGame';
-import enemyPrograms from '../data/enemyPrograms';
+import enemyProgramsList from '../data/enemyPrograms';
 
 const difficulty = {
   easy: 10,
@@ -15,6 +15,9 @@ const difficulty = {
 
 export default (time, initialTime) => {
   const { enemy, player } = store.getState();
+  const enemyPrograms = enemyProgramsList.filter(program =>
+    enemy.programs.includes(program.name)
+  );
 
   const difficultyLevel = difficulty[enemy.difficulty];
 
@@ -57,16 +60,14 @@ export default (time, initialTime) => {
   }
 
   if (enemy.firewallStrength <= 0) {
-    const credits = 200;
-
     store.dispatch(actions.switchScreenToMainConsole());
-    store.dispatch(actions.addToPlayerCredits(credits));
+    store.dispatch(actions.addToPlayerCredits(enemy.credits));
 
     store.dispatch(actions.clearCallStack());
 
     store.dispatch(
       actions.addToTerminalDisplay({
-        output: <EndGame condition={'WIN'} loot={credits} />,
+        output: <EndGame condition={'WIN'} loot={enemy.credits} />,
         color: colors.blue,
       })
     );

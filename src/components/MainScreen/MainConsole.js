@@ -47,6 +47,9 @@ const MainConsole = () => {
       case 'shop':
         commands.goShopping();
         break;
+      case 'show':
+        commands.show(args);
+        break;
       default:
         commands.error(input);
         break;

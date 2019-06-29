@@ -1,8 +1,15 @@
 import { combineReducers } from 'redux';
 
 import firewallStrength from './firewallStrength';
-import program from './programs';
+import programs from './programs';
 import name from './name';
 import difficulty from './difficulty';
+import credits from './credits';
 
-export default combineReducers({ firewallStrength, program, name, difficulty });
+export default combineReducers({
+  firewallStrength,
+  programs,
+  name,
+  difficulty,
+  credits,
+});
