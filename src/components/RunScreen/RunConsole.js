@@ -14,22 +14,24 @@ const RunConsole = () => {
   const dispatch = useDispatch();
 
   const handleRunCommand = input => {
-    dispatch(addToRunTerminalDisplay({ output: `> ${input}` }));
+    input.trim() && dispatch(addToRunTerminalDisplay({ output: `> ${input}` }));
     input.trim() && dispatch(addToRunTerminalHistory(input));
 
-    const [command, ...args] = input.split(' ');
+    /* const [command, ...args] = input.split(' '); */
 
-    switch (command.toLowerCase()) {
-      case 'main':
-        runCommands.main();
-        break;
-      case 'exec':
-        runCommands.execCounterIce(args);
-        break;
-      default:
-        runCommands.error();
-        break;
-    }
+    // switch (command.toLowerCase()) {
+    //   case 'main':
+    //     runCommands.main();
+    //     break;
+    //   case 'exec':
+    //     runCommands.execCounterIce(args);
+    //     break;
+    //   default:
+    //     runCommands.error();
+    //     break;
+    // }
+
+    runCommands.execCounterIce(input);
   };
 
   return (

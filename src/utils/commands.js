@@ -2,23 +2,8 @@ import React from 'react';
 
 import store from '../store';
 import * as actions from '../store/actions';
-import Timer from '../components/Timer';
 import colors from './colors';
 import enemyCorps from '../data/enemyCorps';
-
-export const timer = (args, props) => {
-  store.dispatch(actions.setTerminalInactive());
-  store.dispatch(
-    actions.addToTerminalDisplay({
-      output: (
-        <Timer
-          initialTime={args[0]}
-          setTerminalActive={props.setTerminalActive}
-        />
-      ),
-    })
-  );
-};
 
 export const echo = args => {
   store.dispatch(
@@ -52,16 +37,7 @@ export const createRunner = args => {
     return;
   }
 
-  // const programs = [
-  //   'ice-ice-breaker',
-  //   'set-them-up-the-bomb',
-  //   // 'nuke-em',
-  //   'death-by-a-thousand-cuts',
-  // ]; //! <- remove this after the store is up
-
-  // const startingMemory = 64; //! <- initial player stuff
-
-  store.dispatch(actions.createPlayer(args[0])); //! <= remove programs and add it to the store;
+  store.dispatch(actions.createPlayer(args[0]));
   const { player: newPlayer } = store.getState();
   store.dispatch(
     actions.addToTerminalDisplay({
@@ -121,10 +97,10 @@ export const goShopping = args => {
   store.dispatch(actions.switchScreenToStoreScreen());
 };
 
-export const error = (args, props) => {
+export const error = input => {
   store.dispatch(
     actions.addToTerminalDisplay({
-      output: 'invalid command',
+      output: `${input}: command not found`,
       color: colors.red,
     })
   );

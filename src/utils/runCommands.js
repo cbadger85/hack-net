@@ -49,17 +49,14 @@ export const main = args => {
   );
 };
 
-export const execCounterIce = args => {
-  if (args.length !== 1) {
-    printScreen('invalid argument(s)', colors.red);
+export const execCounterIce = input => {
+  if (!input) {
     return;
   }
 
-  const [programName] = args;
-
-  const program = programs.find(program => program.name === programName);
+  const program = programs.find(program => program.name === input);
   if (!program) {
-    printScreen(`${programName} program missing...`, colors.red);
+    printScreen(`${input}: command not found`, colors.red);
     return;
   }
 
@@ -67,7 +64,7 @@ export const execCounterIce = args => {
   console.log(playerPrograms);
   const playerHasProgram = playerPrograms.includes(program.name);
   if (!playerHasProgram) {
-    printScreen(`${programName} program missing...`, colors.red);
+    printScreen(`${input}: command not found`, colors.red);
     return;
   }
 

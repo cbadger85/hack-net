@@ -5,7 +5,6 @@ import Console from '../Console';
 import {
   addToTerminalHistory,
   addToTerminalDisplay,
-  setTerminalActive,
 } from '../../store/actions';
 
 import * as commands from '../../utils/commands';
@@ -20,18 +19,18 @@ const MainConsole = () => {
 
   const handleRunCommand = input => {
     dispatch(addToTerminalDisplay({ output: `> ${input}` }));
-    input.trim() && dispatch(addToTerminalHistory(input));
+
+    if (!input.trim()) {
+      return;
+    }
+
+    dispatch(addToTerminalHistory(input));
 
     const [command, ...args] = input.split(' ');
 
     switch (command.toLowerCase()) {
       case 'echo':
         commands.echo(args);
-        break;
-      case 'timer':
-        commands.timer(args, {
-          setTerminalActive: () => dispatch(setTerminalActive()),
-        });
         break;
       case 'create-runner':
         commands.createRunner(args);
@@ -49,7 +48,7 @@ const MainConsole = () => {
         commands.goShopping();
         break;
       default:
-        commands.error();
+        commands.error(input);
         break;
     }
   };
