@@ -10,6 +10,7 @@
 - add history on up/down arrows so people can re-run previous commands
 - add reset command
 - add reset button to gameover screen
+- change run commands to something easier and update help file to reflect
 - update gameover with GAME OVER figlet using poison font
 - add 'good job' figlet when defeating corps
 - add 'godmode' into game allowing for use of the nuke'em program. must have created a character first
