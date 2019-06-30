@@ -17,9 +17,9 @@
 
 ## Misc
 
+- add damage ticker
 - add history on up/down arrows so people can re-run previous commands
 - update gameover with GAME OVER figlet using poison font
-- add damage ticker
 - add reset command
 - add reset button to gameover screen
 - add 'good job' figlet when defeating corps

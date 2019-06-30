@@ -92,13 +92,13 @@ const StoreScreen = () => {
       .map(program => program.name);
 
     const memoryBuff = items
-      .filter(item => item.purchased && item.type === 'memory-increase')
+      .filter(item => item.purchased && item.type === 'memory upgrade')
       .reduce((acc, item) => {
         return acc + item.amount;
       }, 0);
 
     const firewallBuff = items
-      .filter(item => item.purchased && item.type === 'firewall-increase')
+      .filter(item => item.purchased && item.type === 'firewall upgrade')
       .reduce((acc, item) => {
         return acc + item.amount;
       }, 0);
@@ -157,6 +157,7 @@ const StoreScreen = () => {
               id={item.name}
               clickItem={handleClickItem}
               credits={credits}
+              type={item.type}
             />
           ))}
         </StoreItemsLayout>

@@ -137,8 +137,7 @@ export const show = args => {
         actions.addToTerminalDisplay({
           output: player.name ? (
             <>
-              runner:{' '}
-              <span style={{ color: colors.green }}>${player.name}</span>
+              runner: <span style={{ color: colors.green }}>{player.name}</span>
             </>
           ) : (
             <span style={{ color: colors.red }}>
@@ -190,9 +189,23 @@ export const show = args => {
         })
       );
       break;
+    case 'firewall':
+      store.dispatch(
+        actions.addToTerminalDisplay({
+          output: player.maxPlayerHealth ? (
+            <>firewall strength: {player.maxPlayerHealth}</>
+          ) : (
+            <span style={{ color: colors.red }}>
+              you need create a runner to gain a firewall
+            </span>
+          ),
+          color: colors.yellow,
+        })
+      );
+      break;
     case 'all':
-      [['runner'], ['credits'], ['memory'], ['programs']].forEach(command =>
-        show(command)
+      [['runner'], ['credits'], ['memory'], ['programs'], ['firewall']].forEach(
+        command => show(command)
       );
       break;
     default:
@@ -225,6 +238,18 @@ export const show = args => {
                   programs:{' '}
                   <span style={{ color: colors.green }}>
                     displays the programs the runner has available in a run
+                  </span>
+                </div>
+                <div>
+                  firewall:{' '}
+                  <span style={{ color: colors.green }}>
+                    displays the strength of the runner's firewall
+                  </span>
+                </div>
+                <div>
+                  all:{' '}
+                  <span style={{ color: colors.green }}>
+                    shows all runner's stats
                   </span>
                 </div>
               </div>

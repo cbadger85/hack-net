@@ -49,6 +49,10 @@ const Checkbox = styled.input`
   }
 `;
 
+const ItemType = styled.span`
+  color: ${props => (props.isSoldOut ? colors.red : colors.green)};
+`;
+
 const StoreItem = ({
   name,
   description,
@@ -56,6 +60,7 @@ const StoreItem = ({
   purchased,
   clickItem,
   credits,
+  type,
 }) => {
   const handleOnClick = () => {
     clickItem(name);
@@ -70,7 +75,10 @@ const StoreItem = ({
         isSoldOut={credits - cost < 0}
       />
       <div style={{ padding: '1em', width: '30%' }}>{name}</div>
-      <div style={{ padding: '1em', width: '56%' }}>{description}</div>
+      <div style={{ padding: '1em', width: '56%' }}>
+        <ItemType isSoldOut={credits - cost < 0}>{type}:</ItemType>{' '}
+        {description}
+      </div>
       <div style={{ padding: '.5em', width: '10%', textAlign: 'right' }}>
         {cost}
       </div>
