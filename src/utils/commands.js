@@ -111,11 +111,17 @@ export const executeRun = args => {
 
   const listOfEnemyCorps = Object.keys(enemyCorps);
 
-  if (!listOfEnemyCorps.includes(enemyCorp)) {
+  if (args.length === 0 || !listOfEnemyCorps.includes(enemyCorp)) {
     store.dispatch(
       actions.addToTerminalDisplay({
-        output: "That connection doesn't exist",
-        color: colors.red,
+        output: (
+          <>
+            <div style={{ color: colors.yellow }}>connections:</div>
+            {listOfEnemyCorps.map(corp => (
+              <div>{corp}</div>
+            ))}
+          </>
+        ),
       })
     );
     return;

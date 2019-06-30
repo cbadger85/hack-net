@@ -7,7 +7,7 @@
   - create-runner [name]
   - connect [corp]
   - shop
-  - show
+  - show [command]
 - explain a run
   - how to execute programs
   - how TTE works
@@ -17,10 +17,9 @@
 
 ## Misc
 
-- typing connect with no args shows all possible connections
 - add history on up/down arrows so people can re-run previous commands
 - update gameover with GAME OVER figlet using poison font
-- add reset command
+- add reset dispatch
 - add reset button to gameover screen
 - add 'good job' figlet when defeating corps
 - add ctrl + c to quite run/shop
