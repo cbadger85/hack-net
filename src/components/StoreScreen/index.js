@@ -33,6 +33,10 @@ const StoreItemsLayout = styled.div`
   width: 80%;
   border: 1px solid ${colors.blue};
   padding: 0 1em;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const Credits = styled.div`
@@ -60,8 +64,10 @@ const StoreScreen = () => {
   const initialCredits = useSelector(state => state.player.credits);
   const [items, setItems] = useState(initialStoreItems);
   const [credits, setCredits] = useState(initialCredits);
+  const [focusedItem, setFocusedItem] = useState(storeItems[0].name);
 
   const handleClickItem = name => {
+    setFocusedItem(name);
     setItems(
       items.map(item => {
         if (item.name !== name) {
@@ -86,7 +92,6 @@ const StoreScreen = () => {
       return;
     }
 
-    // TODO: add player programs and stats
     const programs = items
       .filter(item => item.purchased && item.type === 'program')
       .map(program => program.name);
@@ -174,6 +179,7 @@ const StoreScreen = () => {
               clickItem={handleClickItem}
               credits={credits}
               type={item.type}
+              isFocused={focusedItem === item.name}
             />
           ))}
         </StoreItemsLayout>

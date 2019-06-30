@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
 import colors from '../../utils/colors';
@@ -61,18 +61,30 @@ const StoreItem = ({
   clickItem,
   credits,
   type,
+  tabIndex,
+  isFocused,
 }) => {
-  const handleOnClick = () => {
+  const checkboxRef = useRef();
+
+  useEffect(() => {
+    isFocused && checkboxRef.current.focus();
+  });
+
+  const handleOnClick = e => {
     clickItem(name);
   };
+
+  isFocused && console.log(`${name} is focused`);
 
   return (
     <StoreItemWrapper onClick={handleOnClick} isSoldOut={credits - cost < 0}>
       <Checkbox
+        ref={checkboxRef}
         type="checkbox"
         checked={purchased}
         onChange={() => null}
         isSoldOut={credits - cost < 0}
+        tabIndex={tabIndex}
       />
       <div style={{ padding: '1em', width: '30%' }}>{name}</div>
       <div style={{ padding: '1em', width: '56%' }}>
