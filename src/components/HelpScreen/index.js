@@ -15,6 +15,10 @@ const HelpLayout = styled.div`
   height: 100%;
   font-size: 1.5em;
   overflow-y: scroll;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const Button = styled.button`
