@@ -32,9 +32,10 @@ const Textarea = styled.textarea`
   }
 `;
 
-const ConsoleInput = ({ runCommand, runMode }) => {
+const ConsoleInput = ({ runCommand, runMode, terminalHistory }) => {
   const [input, setInput] = useState('');
   const [inputHeight, setInputHeight] = useState('auto');
+  const [historyIndex, setHistoryIndex] = useState(0);
   const consoleInput = useRef();
   let timeout;
 
@@ -49,6 +50,29 @@ const ConsoleInput = ({ runCommand, runMode }) => {
       e.preventDefault();
       runCommand(input.trim());
       setInput('');
+      setHistoryIndex(0);
+    }
+
+    const reversedTerminalHistory = terminalHistory.reduce(
+      (acc, command) => [command, ...acc],
+      []
+    );
+
+    if (e.keyCode === 38) {
+      e.preventDefault();
+      if (terminalHistory.length > 0 && reversedTerminalHistory[historyIndex]) {
+        setInput(reversedTerminalHistory[historyIndex]);
+        historyIndex >= 0 && setHistoryIndex(historyIndex + 1);
+      }
+    }
+
+    if (e.keyCode === 40) {
+      setHistoryIndex(historyIndex - 1 >= 0 ? historyIndex - 1 : historyIndex);
+      setInput(
+        reversedTerminalHistory[historyIndex - 2]
+          ? reversedTerminalHistory[historyIndex - 2]
+          : ''
+      );
     }
 
     timeout = setTimeout(() => {

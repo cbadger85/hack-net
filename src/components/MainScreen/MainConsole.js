@@ -11,6 +11,7 @@ import * as commands from '../../utils/commands';
 
 const MainConsole = () => {
   const terminalOutput = useSelector(state => state.terminal.terminalOutput);
+  const terminalHistory = useSelector(state => state.terminal.history);
   const isTerminalActive = useSelector(
     state => state.terminal.isTerminalActive
   );
@@ -57,6 +58,7 @@ const MainConsole = () => {
     <Console
       terminalOutput={terminalOutput}
       runCommand={handleRunCommand}
+      terminalHistory={terminalHistory}
       disableInput={!isTerminalActive}
     />
   );

@@ -10,6 +10,7 @@ import * as runCommands from '../../utils/runCommands';
 
 const RunConsole = () => {
   const terminalOutput = useSelector(state => state.runTerminal.terminalOutput);
+  const terminalHistory = useSelector(state => state.runTerminal.history);
 
   const dispatch = useDispatch();
 
@@ -17,26 +18,13 @@ const RunConsole = () => {
     input.trim() && dispatch(addToRunTerminalDisplay({ output: `> ${input}` }));
     input.trim() && dispatch(addToRunTerminalHistory(input));
 
-    /* const [command, ...args] = input.split(' '); */
-
-    // switch (command.toLowerCase()) {
-    //   case 'main':
-    //     runCommands.main();
-    //     break;
-    //   case 'exec':
-    //     runCommands.execCounterIce(args);
-    //     break;
-    //   default:
-    //     runCommands.error();
-    //     break;
-    // }
-
     runCommands.execCounterIce(input);
   };
 
   return (
     <Console
       terminalOutput={terminalOutput}
+      terminalHistory={terminalHistory}
       runCommand={handleRunCommand}
       runMode
     />

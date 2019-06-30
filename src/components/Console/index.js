@@ -18,6 +18,7 @@ const ConsoleWrapper = styled.div`
 
 const ConsoleContainer = ({
   terminalOutput,
+  terminalHistory,
   runCommand,
   disableInput,
   runMode,
@@ -31,7 +32,11 @@ const ConsoleContainer = ({
     <ConsoleWrapper runMode onClick={handleFocus} id="console-id">
       <ConsoleOutput terminalOutput={terminalOutput} runMode={runMode} />
       {!disableInput && (
-        <ConsoleInput runCommand={runCommand} runMode={runMode} />
+        <ConsoleInput
+          runCommand={runCommand}
+          runMode={runMode}
+          terminalHistory={terminalHistory}
+        />
       )}
       {!runMode && <ConsoleBottom />}
     </ConsoleWrapper>
