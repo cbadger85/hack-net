@@ -93,6 +93,11 @@ export const switchScreenToStoreScreen = () => ({
   type: SWITCH_TO_STORE_SCREEN,
 });
 
+export const SWITCH_TO_HELP_SCREEN = 'SWITCH_TO_HELP_SCREEN';
+export const switchToHelpScreen = () => ({
+  type: SWITCH_TO_HELP_SCREEN,
+});
+
 export const SET_BUFFER_AMOUNT = 'SET_BUFFER_AMOUNT';
 export const setBufferAmount = buffer => ({
   type: SET_BUFFER_AMOUNT,

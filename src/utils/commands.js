@@ -76,6 +76,10 @@ export const goShopping = args => {
   store.dispatch(actions.switchScreenToStoreScreen());
 };
 
+export const help = args => {
+  store.dispatch(actions.switchToHelpScreen());
+};
+
 export const error = input => {
   store.dispatch(
     actions.addToTerminalDisplay({

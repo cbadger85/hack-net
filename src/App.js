@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import MainScreen from './components/MainScreen';
 import RunScreen from './components/RunScreen';
 import StoreScreen from './components/StoreScreen';
+import HelpScreen from './components/HelpScreen';
 
 const App = ({ screen }) => {
   switch (screen) {
@@ -17,6 +18,12 @@ const App = ({ screen }) => {
       return (
         <div>
           <StoreScreen />
+        </div>
+      );
+    case 'help':
+      return (
+        <div>
+          <HelpScreen />
         </div>
       );
     default:

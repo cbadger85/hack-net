@@ -17,7 +17,6 @@
 
 ## Misc
 
-- add history on up/down arrows so people can re-run previous commands
 - update gameover with GAME OVER figlet using poison font
 - add reset dispatch
 - add reset button to gameover screen

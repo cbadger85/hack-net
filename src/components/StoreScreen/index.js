@@ -112,6 +112,22 @@ const StoreScreen = () => {
       })
     );
     dispatch(actions.switchScreenToMainConsole());
+    dispatch(
+      actions.addToTerminalDisplay({
+        output: 'Thank you for your purchase!',
+        color: colors.yellow,
+      })
+    );
+    dispatch(
+      actions.addToTerminalDisplay({
+        output: (
+          <div>
+            run <span style={{ color: colors.pink }}>help</span> to learn how to
+            play
+          </div>
+        ),
+      })
+    );
   };
 
   const handleCancel = () => {
