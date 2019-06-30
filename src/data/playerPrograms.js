@@ -25,9 +25,16 @@ export default [
       "A lightly penetrating attack designed to test the target's defenses",
     tte: 3,
     cost: 1000,
+    damage: 4,
     memRequired: 8,
     program: function() {
-      isRunMode() && store.dispatch(actions.damageEnemyFirewall(3));
+      store.dispatch(actions.damageEnemyFirewall(this.damage));
+      store.dispatch(
+        actions.addToRunTerminalDisplay({
+          output: `you dealt ${this.damage}`,
+          color: colors.green,
+        })
+      );
       printSuccess(this.name);
     },
   },
@@ -39,15 +46,23 @@ export default [
       "A damaging worm that disables critical systems in targe's mainframe",
     tte: 15,
     cost: 2500,
+    damage: 20,
     memRequired: 32,
     program: function() {
-      isRunMode() && store.dispatch(actions.damageEnemyFirewall(20));
+      store.dispatch(actions.damageEnemyFirewall(this.damage));
+      store.dispatch(
+        actions.addToRunTerminalDisplay({
+          output: `you dealt ${this.damage}`,
+          color: colors.green,
+        })
+      );
       printSuccess(this.name);
     },
   },
   // {
   //   name: 'nuke-em',
   //   type: 'program',
+  //   description: 'auto-win',
   //   unique: true,
   //   tte: 0,
   //   cost: 0,
@@ -64,12 +79,19 @@ export default [
     description: "A brutal DDoS attack that overload's the target's firewall",
     tte: 10,
     cost: 1500,
+    damage: 3,
     memRequired: 16,
     program: function() {
       let timer = 12;
       const dotTimer = setInterval(() => {
         if (timer > 1) {
-          isRunMode() && store.dispatch(actions.damageEnemyFirewall(3));
+          store.dispatch(actions.damageEnemyFirewall(this.damage));
+          store.dispatch(
+            actions.addToRunTerminalDisplay({
+              output: `you dealt ${this.damage}`,
+              color: colors.green,
+            })
+          );
         }
         if (!isRunMode() || timer <= 1) {
           clearInterval(dotTimer);

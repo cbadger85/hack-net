@@ -3,8 +3,20 @@ export default {
     name: 'First Corp',
     connectionName: 'firstCorp',
     difficultyLevel: 'easy',
-    firewallStrength: 150,
+    firewallStrength: 100,
     programs: ['counter insertion agent', 'reverse denial of service'],
+    credits: 250,
+  },
+  medCorp: {
+    name: 'First Corp',
+    connectionName: 'firstCorp',
+    difficultyLevel: 'medium',
+    firewallStrength: 150,
+    programs: [
+      'counter insertion agent',
+      'reverse denial of service',
+      'anti-viral doubler',
+    ],
     credits: 500,
   },
   hardCorp: {

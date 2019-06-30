@@ -17,7 +17,7 @@
 
 ## Misc
 
-- add damage ticker
+- typing connect with no args shows all possible connections
 - add history on up/down arrows so people can re-run previous commands
 - update gameover with GAME OVER figlet using poison font
 - add reset command
