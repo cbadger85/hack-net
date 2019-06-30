@@ -39,7 +39,7 @@ const CallStack = () => {
       <CallStackTitleWrapper>
         <h2>Call Stack</h2>
         <p>memory remaining</p>
-        <h2>{buffer}</h2>
+        <h2>{buffer} kb</h2>
       </CallStackTitleWrapper>
       <CallStackProgramWrapper ref={callStackScroll}>
         {callStack.map(program => program.output)}
