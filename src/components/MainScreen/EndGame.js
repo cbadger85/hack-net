@@ -25,11 +25,6 @@ const Button = styled.button`
 
 const OutOfTime = () => {
   const dispatch = useDispatch();
-  const buttonRef = useRef();
-
-  useEffect(() => {
-    buttonRef.current.focus();
-  });
 
   const handleOnClick = () => {
     dispatch(reset());
@@ -46,7 +41,7 @@ const OutOfTime = () => {
       <div>+++ TERMINAL LOCKED +++</div>
       <p style={{ paddingTop: '2em' }}>+++ GAME OVER +++</p>
       <div style={{ textAlign: 'center', padding: '1em' }}>
-        <Button type="button" onClick={handleOnClick} ref={buttonRef}>
+        <Button type="button" onClick={handleOnClick}>
           Start Over
         </Button>
       </div>
@@ -56,11 +51,6 @@ const OutOfTime = () => {
 
 const OutOfHealth = () => {
   const dispatch = useDispatch();
-  const buttonRef = useRef();
-
-  useEffect(() => {
-    buttonRef.current.focus();
-  });
 
   const handleOnClick = () => {
     dispatch(reset());
@@ -77,7 +67,7 @@ const OutOfHealth = () => {
       <div>+++ TERMINAL LOCKED +++</div>
       <p style={{ paddingTop: '2em' }}>+++ GAME OVER +++</p>
       <div style={{ textAlign: 'center', padding: '1em' }}>
-        <Button type="button" onClick={handleOnClick} ref={buttonRef}>
+        <Button type="button" onClick={handleOnClick}>
           Start Over
         </Button>
       </div>
