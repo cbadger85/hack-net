@@ -115,7 +115,28 @@ const HelpScreen = () => {
             </div>
           </li>
         </ul>
-        <h2 style={{ fontSize: '1.1em' }}>How to Play</h2>
+        <h2 style={{ fontSize: '1.1em', color: colors.pink }}>How to Start</h2>
+        <p>
+          use the create-runner command to make a name and head to the store to
+          purchase programs and upgrades. programs are required to make runs, so
+          be sure you buy at least one! After making your purchases, use the
+          connect command to connect to an enemy corporation and start your run
+        </p>
+        <h2 style={{ fontSize: '1.1em', color: colors.pink }}>Making a Run</h2>
+        <p>
+          while making a run, the only programs you'll have access to are the
+          programs that you've purchased. each program will have a memory cost
+          and a time to execution (TTE). you can only have so many programs
+          loading in your memory buffer be you'll have to wait to load another.
+          once the TTE countdown is complete, the program will execute against
+          the target of your run.
+        </p>
+        <p>
+          to win, you must break through the target's firewall. you'll only have
+          a minute to do it, so you'll have to type fast. the target will also
+          run programs against you, so if your firewall is breached, it's
+          gameover man!
+        </p>
         <div style={{ textAlign: 'center' }}>
           <Button type="button" onClick={handleOnClick}>
             Ok

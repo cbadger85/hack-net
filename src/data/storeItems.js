@@ -3,7 +3,7 @@ import playerPrograms from './playerPrograms';
 export default [
   ...playerPrograms,
   {
-    name: 'LightFirewall Booster',
+    name: 'Light Firewall Booster',
     description: "A mild increase to your firewall's strength",
     cost: 1000,
     type: 'firewall upgrade',
