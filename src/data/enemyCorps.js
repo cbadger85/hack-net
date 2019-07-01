@@ -8,8 +8,8 @@ export default {
     credits: 250,
   },
   medCorp: {
-    name: 'First Corp',
-    connectionName: 'firstCorp',
+    name: 'Med Corp',
+    connectionName: 'medCorp',
     difficultyLevel: 'medium',
     firewallStrength: 150,
     programs: [

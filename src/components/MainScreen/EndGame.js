@@ -36,7 +36,7 @@ const OutOfTime = () => {
   };
 
   return (
-    <div style={{ color: colors.red }}>
+    <div style={{ color: colors.red, height: '100%' }}>
       <Figlet font="poison" color={colors.pink}>
         GAME OVER
       </Figlet>
@@ -44,8 +44,8 @@ const OutOfTime = () => {
         trace complete
       </div>
       <div>+++ TERMINAL LOCKED +++</div>
-      <p style={{ marginTop: '2em' }}>+++ GAME OVER +++</p>
-      <div style={{ textAlign: 'center' }}>
+      <p style={{ paddingTop: '2em' }}>+++ GAME OVER +++</p>
+      <div style={{ textAlign: 'center', padding: '1em' }}>
         <Button type="button" onClick={handleOnClick} ref={buttonRef}>
           Start Over
         </Button>
@@ -67,7 +67,7 @@ const OutOfHealth = () => {
   };
 
   return (
-    <div style={{ color: colors.red }}>
+    <div style={{ color: colors.red, height: '100%' }}>
       <Figlet font="poison" color={colors.pink}>
         GAME OVER
       </Figlet>
@@ -75,8 +75,8 @@ const OutOfHealth = () => {
         firewall destroyed
       </div>
       <div>+++ TERMINAL LOCKED +++</div>
-      <p style={{ marginTop: '2em' }}>+++ GAME OVER +++</p>
-      <div style={{ textAlign: 'center' }}>
+      <p style={{ paddingTop: '2em' }}>+++ GAME OVER +++</p>
+      <div style={{ textAlign: 'center', padding: '1em' }}>
         <Button type="button" onClick={handleOnClick} ref={buttonRef}>
           Start Over
         </Button>
@@ -88,8 +88,11 @@ const OutOfHealth = () => {
 const Win = ({ loot }) => {
   return (
     <div style={{ color: colors.blue }}>
+      <Figlet font="rounded" isConsole color={colors.green}>
+        GOOD JOB!
+      </Figlet>
       <div style={{ color: colors.yellow }}>Firewall Breached</div>
-      <p style={{ marginTop: '2em', color: colors.green }}>
+      <p style={{ marginTop: '2em', color: colors.blue }}>
         you gained {loot} credits
       </p>
     </div>

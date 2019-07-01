@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import figlet from 'figlet';
-import { promisify } from 'es6-promisify';
 import styled, { css } from 'styled-components';
 
 import colors from '../utils/colors';
@@ -15,16 +14,6 @@ const FigletWrapper = styled.div`
     `}
 `;
 
-const getFigletPromise = (inputText, font) => {
-  figlet.defaults({ fontPath: 'assets/fonts' });
-
-  const figletPromise = promisify(figlet);
-
-  const text = figletPromise(inputText, font);
-
-  return text;
-};
-
 const Figlet = ({
   children,
   font = 'poison',
@@ -34,9 +23,15 @@ const Figlet = ({
   const [figletText, setFigletText] = useState('');
 
   useEffect(() => {
-    getFigletPromise(children, font)
-      .then(data => setFigletText(data))
-      .catch(e => console.log(e));
+    figlet.defaults({ fontPath: 'assets/fonts' });
+
+    figlet(children, font, function(err, text) {
+      if (err) {
+        return;
+      }
+
+      setFigletText(text);
+    });
   }, [children, font]);
 
   return (

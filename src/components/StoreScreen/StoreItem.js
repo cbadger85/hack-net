@@ -74,8 +74,6 @@ const StoreItem = ({
     clickItem(name);
   };
 
-  isFocused && console.log(`${name} is focused`);
-
   return (
     <StoreItemWrapper onClick={handleOnClick} isSoldOut={credits - cost < 0}>
       <Checkbox
