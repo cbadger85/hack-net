@@ -1,11 +1,15 @@
-import { CREATE_PLAYER, PURCHASE_ITEMS } from '../../actions';
+import { CREATE_PLAYER, PURCHASE_ITEMS, RESET } from '../../actions';
 
-export default (state = 0, { type, payload }) => {
+const initialState = 0;
+
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case CREATE_PLAYER:
       return 100;
     case PURCHASE_ITEMS:
       return payload.firewallBuff + state;
+    case RESET:
+      return initialState;
     default:
       return state;
   }

@@ -1,9 +1,13 @@
-import { PURCHASE_ITEMS } from '../../actions';
+import { PURCHASE_ITEMS, RESET } from '../../actions';
 
-export default (state = 64, { type, payload }) => {
+const initialState = 64;
+
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case PURCHASE_ITEMS:
       return state + payload.memoryBuff;
+    case RESET:
+      return initialState;
     default:
       return state;
   }

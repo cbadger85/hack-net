@@ -16,7 +16,8 @@ const Intro = () => {
       </div>
       <div>
         run <span style={{ color: colors.pink }}>create-runner [name] </span>
-        to begin...
+        to begin or use <span style={{ color: colors.pink }}>help</span> to
+        learn how to play
       </div>
     </div>
   );

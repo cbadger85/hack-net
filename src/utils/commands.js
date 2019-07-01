@@ -271,3 +271,24 @@ export const show = args => {
       return;
   }
 };
+
+export const reset = args => {
+  const playerName = store.getState().player.name;
+
+  if (args[0] === playerName || !playerName) {
+    store.dispatch(actions.reset());
+    return;
+  }
+
+  store.dispatch(
+    actions.addToTerminalDisplay({
+      output: (
+        <>
+          invalid argument for reset. command is{' '}
+          <span style={{ color: colors.yellow }}>reset [runner]</span>
+        </>
+      ),
+      color: colors.red,
+    })
+  );
+};

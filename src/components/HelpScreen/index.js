@@ -110,6 +110,12 @@ const HelpScreen = () => {
           </li>
           <li>
             <div>
+              <p style={{ color: colors.yellow }}>reset [runner]</p>
+              <p>allows player to reset to the beginning of the game.</p>
+            </div>
+          </li>
+          <li>
+            <div>
               <p style={{ color: colors.yellow }}>help</p>
               <p>displays the help screen.</p>
             </div>

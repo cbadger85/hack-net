@@ -3,7 +3,10 @@ import {
   SWITCH_SCREEN_TO_RUN_CONSOLE,
   SWITCH_TO_STORE_SCREEN,
   SWITCH_TO_HELP_SCREEN,
+  RESET,
 } from '../../actions';
+
+const initialState = 'main';
 
 export default (state = 'main', { type, payload }) => {
   switch (type) {
@@ -15,6 +18,8 @@ export default (state = 'main', { type, payload }) => {
       return 'store';
     case SWITCH_TO_HELP_SCREEN:
       return 'help';
+    case RESET:
+      return initialState;
     default:
       return state;
   }

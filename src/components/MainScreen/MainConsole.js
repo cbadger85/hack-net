@@ -51,6 +51,9 @@ const MainConsole = () => {
       case 'show':
         commands.show(args);
         break;
+      case 'reset':
+        commands.reset(args);
+        break;
       default:
         commands.error(input);
         break;

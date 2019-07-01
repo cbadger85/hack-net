@@ -1,11 +1,13 @@
 import {
   ADD_TO_CALL_STACK,
   REMOVE_PROGRAM_FROM_CALL_STACK,
-  CLEAR_CALL_STACK,
   SET_BUFFER_AMOUNT,
+  RESET,
 } from '../../actions';
 
-export default (state = 64, { type, payload }) => {
+const initialState = 64;
+
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_BUFFER_AMOUNT:
       return payload;
@@ -13,8 +15,8 @@ export default (state = 64, { type, payload }) => {
       return state - payload.memRequired;
     case REMOVE_PROGRAM_FROM_CALL_STACK:
       return state + payload.memRequired;
-    case CLEAR_CALL_STACK:
-      return 64;
+    case RESET:
+      return initialState;
     default:
       return state;
   }

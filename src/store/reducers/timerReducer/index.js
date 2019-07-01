@@ -1,11 +1,15 @@
-import { TICK, SWITCH_SCREEN_TO_RUN_CONSOLE } from '../../actions';
+import { TICK, SWITCH_SCREEN_TO_RUN_CONSOLE, RESET } from '../../actions';
 
-export default (state = 59, { type, payload }) => {
+const initialState = 59;
+
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case TICK:
       return state - 1;
     case SWITCH_SCREEN_TO_RUN_CONSOLE:
-      return 59;
+      return initialState;
+    case RESET:
+      return initialState;
     default:
       return state;
   }

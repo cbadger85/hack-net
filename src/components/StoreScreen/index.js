@@ -127,7 +127,9 @@ const StoreScreen = () => {
       actions.addToTerminalDisplay({
         output: (
           <div>
-            run <span style={{ color: colors.pink }}>help</span> to learn how to
+            use <span style={{ color: colors.pink }}>connect [corp]</span>{' '}
+            whenever you're ready to start your run or use{' '}
+            <span style={{ color: colors.pink }}>help</span> to learn how to
             play
           </div>
         ),
@@ -140,7 +142,7 @@ const StoreScreen = () => {
     dispatch(
       actions.addToTerminalDisplay({
         output:
-          'Thank you for visiting! Feel free to come back and improve your deck!',
+          'Thank you for visiting! Feel free to come back and improve your rig!',
         color: colors.yellow,
       })
     );
@@ -148,7 +150,9 @@ const StoreScreen = () => {
       actions.addToTerminalDisplay({
         output: (
           <div>
-            run <span style={{ color: colors.pink }}>help</span> to learn how to
+            use <span style={{ color: colors.pink }}>connect [corp]</span>{' '}
+            whenever you're ready to start your run or use{' '}
+            <span style={{ color: colors.pink }}>help</span> to learn how to
             play
           </div>
         ),

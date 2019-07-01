@@ -7,6 +7,7 @@ import {
   ADD_TO_TERMINAL_DISPLAY,
   CLEAR_TERMINAL_DISPLAY,
   SWITCH_SCREEN_TO_MAIN_CONSOLE,
+  RESET,
 } from '../../actions';
 
 const initialState = [
@@ -24,6 +25,8 @@ export default (state = initialState, { type, payload }) => {
       return [];
     case SWITCH_SCREEN_TO_MAIN_CONSOLE:
       return [];
+    case RESET:
+      return initialState;
     default:
       return state;
   }

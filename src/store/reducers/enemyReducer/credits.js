@@ -1,9 +1,13 @@
-import { CREATE_ENEMY } from '../../actions';
+import { CREATE_ENEMY, RESET } from '../../actions';
 
-export default (state = 0, { type, payload }) => {
+const initialState = 0;
+
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case CREATE_ENEMY:
       return payload.credits;
+    case RESET:
+      return initialState;
     default:
       return state;
   }

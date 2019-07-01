@@ -140,3 +140,8 @@ export const purchaseItems = ({
   type: PURCHASE_ITEMS,
   payload: { programs, memoryBuff, firewallBuff, cost },
 });
+
+export const RESET = 'RESET';
+export const reset = () => ({
+  type: RESET,
+});

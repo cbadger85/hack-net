@@ -22,13 +22,13 @@ export default [
     damage: 5,
     program: function() {
       store.dispatch(actions.damagePlayerFirewall(this.damage));
+      printSuccess(this.name);
       store.dispatch(
         actions.addToRunTerminalDisplay({
           output: `${this.damage} damage has been dealt to you`,
           color: colors.red,
         })
       );
-      printSuccess(this.name);
     },
   },
   {
@@ -36,19 +36,20 @@ export default [
     damage: 20,
     program: function() {
       store.dispatch(actions.damagePlayerFirewall(this.damage));
+      printSuccess(this.name);
       store.dispatch(
         actions.addToRunTerminalDisplay({
           output: `${this.damage} damage has been dealt to you`,
           color: colors.red,
         })
       );
-      printSuccess(this.name);
     },
   },
   {
     name: 'anti-viral doubler',
     damage: 3,
     program: function() {
+      printSuccess(this.name);
       let timer = 12;
       const dotTimer = setInterval(() => {
         if (timer > 1) {
@@ -65,7 +66,6 @@ export default [
         }
         timer -= 1;
       }, 2000);
-      printSuccess(this.name);
     },
   },
 ];
